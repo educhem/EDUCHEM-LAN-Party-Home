@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, type ReactNode } from 'react'
+import styles from './accordion.module.scss'
 
 interface AccordionItemProps {
   title: string
@@ -12,16 +13,16 @@ export function AccordionItem({ title, children, defaultOpen = false }: Accordio
   const [open, setOpen] = useState(defaultOpen)
 
   return (
-    <div className="accordion-item">
+    <div className={styles.item}>
       <button
-        className="accordion-trigger"
+        className={styles.trigger}
         onClick={() => setOpen(!open)}
         aria-expanded={open}
       >
         <span>{title}</span>
-        <div className={`icon-placeholder sm accordion-chevron${open ? ' open' : ''}`} aria-hidden="true" />
+        <span className={`${styles.chevron}${open ? ` ${styles.open}` : ''}`} aria-hidden="true" />
       </button>
-      <div className={`accordion-content${open ? '' : ' hidden'}`}>
+      <div className={`${styles.content}${open ? '' : ` ${styles.hidden}`}`}>
         {children}
       </div>
     </div>
@@ -33,5 +34,5 @@ interface AccordionProps {
 }
 
 export function Accordion({ children }: AccordionProps) {
-  return <div className="accordion">{children}</div>
+  return <div className={styles.root}>{children}</div>
 }

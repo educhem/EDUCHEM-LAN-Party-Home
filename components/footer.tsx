@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import styles from './footer.module.scss'
 
 const footerLinks = [
   { href: '/info', label: 'Info' },
@@ -10,29 +11,28 @@ const footerLinks = [
 
 export function Footer() {
   return (
-    <footer className="footer">
-      <div className="container">
-        <div className="footer-content">
-          <Link href="/" className="footer-logo">
-            <div className="icon-placeholder lg" aria-hidden="true" />
+    <footer className={styles.footer}>
+      <div className={styles.inner}>
+        <div className={styles.content}>
+          <Link href="/" className={styles.logo}>
+            <span className={styles.logoMark} aria-hidden="true">LP</span>
             <span>EDUCHEM LAN Party</span>
           </Link>
 
-          <nav className="footer-links">
+          <nav className={styles.links}>
             {footerLinks.map((link) => (
-              <Link key={link.href} href={link.href} className="footer-link">
+              <Link key={link.href} href={link.href} className={styles.link}>
                 {link.label}
               </Link>
             ))}
           </nav>
 
-          <a href="/info.pdf" download className="btn btn-secondary">
-            <div className="icon-placeholder sm" aria-hidden="true" />
-            Stahnout info.pdf
+          <a href="/info.pdf" download className={styles.download}>
+            Stáhnout info.pdf
           </a>
         </div>
 
-        <p style={{ textAlign: 'center', marginTop: '32px', fontSize: '0.875rem', color: 'var(--text-color-darker)' }}>
+        <p className={styles.note}>
           EDUCHEM LAN Party 2025 - SS EDUCHEM, Eduarda Basse 1142, 434 01 Most
         </p>
       </div>

@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { Accordion, AccordionItem } from '@/components/accordion'
+import shell from '../page-shell.module.scss'
 
 interface RuleCategory {
   id: string
@@ -12,52 +13,52 @@ interface RuleCategory {
 const categories: RuleCategory[] = [
   {
     id: 'bezpecnost',
-    title: 'Bezpecnost a technika',
+    title: 'Bezpečnost a technika',
     rules: [
-      { title: 'Bezpecnostni opatreni', content: 'Po celou dobu konani akce dodrzujte bezpecnostni pokyny. Nepouzivejte elektroniku nebo jine zarizeni tak, aby to ohrozilo vas nebo ostatni.' },
-      { title: 'Odchazeni z budovy', content: 'Odchazeni behem akce z budovy skoly je mozne, ale ucitel musi byt informovan.' },
-      { title: 'Skolni PC', content: 'Neni dovoleno menit zapojeni skolnich PC (odpojovat monitory) ci jine periferie vcetne mysi a klavesnice.' },
-      { title: 'Cizi vybaveni', content: 'Prosime, nezasahujte do ciziho vybaveni bez svoleni majitele.' },
-      { title: 'Vlastni setup', content: 'Ucastnici akce mohou si s sebou vzit vlastni setup. Jsou si povinni vzit s sebou vlastni monitor a vsechny veci potrebne pro chod pocitace + prodluzovak.' },
+      { title: 'Bezpečnostní opatření', content: 'Po celou dobu konání akce dodržujte bezpečnostní pokyny. Nepoužívejte elektroniku nebo jiná zařízení tak, aby to ohrozilo vás nebo ostatní.' },
+      { title: 'Odcházení z budovy', content: 'Odcházení během akce z budovy školy je možné, ale učitel musí být informován.' },
+      { title: 'Školní PC', content: 'Není dovoleno měnit zapojení školních PC (odpojovat monitory) či jiné periferie včetně myší a klávesnic.' },
+      { title: 'Cizí vybavení', content: 'Prosíme, nezasahujte do cizího vybavení bez svolení majitele.' },
+      { title: 'Vlastní setup', content: 'Účastníci akce si mohou s sebou vzít vlastní setup. Jsou povinni vzít si s sebou vlastní monitor a všechny věci potřebné pro chod počítače + prodlužovák.' },
     ],
   },
   {
     id: 'majetek',
-    title: 'Ochrana majetku a prostredi',
+    title: 'Ochrana majetku a prostředí',
     rules: [
-      { title: 'Respekt k majetku', content: 'Nepouzivejte veci ostatnich ucastniku bez jejich souhlasu. Kazdy ucastnik nese odpovednost za sve osobni veci.' },
-      { title: 'Cistota a poradek', content: 'Udrzujte prostor, kde se akce kona, v cistote. Po sobe uklizejte a odstranujte neporadek. Predtim, nez budete odchazet, si po sobe uklidte.' },
+      { title: 'Respekt k majetku', content: 'Nepoužívejte věci ostatních účastníků bez jejich souhlasu. Každý účastník nese odpovědnost za své osobní věci.' },
+      { title: 'Čistota a pořádek', content: 'Udržujte prostor, kde se akce koná, v čistotě. Po sobě uklízejte a odstraňujte nepořádek. Předtím, než budete odcházet, si po sobě ukliďte.' },
     ],
   },
   {
     id: 'chovani',
-    title: 'Komunikace a chovani',
+    title: 'Komunikace a chování',
     rules: [
-      { title: 'Respektujte ostatni ucastniky', content: 'Budte ohleduplni a respektujte hranice a pohodli ostatnich. Neprovadejte zadne nevhodne nebo rusive chovani.' },
-      { title: 'Hlucnost a klidova doba', content: 'V noci snizte hlasitost, abyste minimalizovali ruseni okolniho prostredi behem nocniho klidu.' },
+      { title: 'Respektujte ostatní účastníky', content: 'Buďte ohleduplní a respektujte hranice a pohodlí ostatních. Neprovádějte žádné nevhodné nebo rušivé chování.' },
+      { title: 'Hlučnost a klidová doba', content: 'V noci snižte hlasitost, abyste minimalizovali rušení okolního prostředí během nočního klidu.' },
     ],
   },
   {
     id: 'jidlo',
-    title: 'Jidlo a napoje',
+    title: 'Jídlo a nápoje',
     rules: [
-      { title: 'Pravidla stravovani', content: 'Dodrzujte pravidla ohledne jidla a piti stanovena skolou/poradatelem. Jezte a pijte tak, abyste neohrozili majetek ucastniku a skoly.' },
-      { title: 'Cas jidla', content: 'Na jidlo neni stanoven presny cas, jist se bude dany cas, kdy to vyjde (jidlo: veci na grilovani a piti v cene).' },
+      { title: 'Pravidla stravování', content: 'Dodržujte pravidla ohledně jídla a pití stanovená školou/pořadatelem. Jezte a pijte tak, abyste neohrozili majetek účastníků a školy.' },
+      { title: 'Čas jídla', content: 'Na jídlo není stanoven přesný čas, jíst se bude v daný čas, kdy to vyjde (jídlo: věci na grilování a pití v ceně).' },
     ],
   },
   {
     id: 'hry',
-    title: 'Stahovani her',
+    title: 'Stahování her',
     rules: [
-      { title: 'Opatreni pro stahovani', content: 'Kvuli pretizeni site jsme museli udelat opatreni pro stahovani her. Pro snizeni pretizeni site si zkontrolujte a pripadne zapnete prislusne nastaveni na Steamu na skolnim pocitaci.' },
-      { title: 'Doporuceni - vlastni disk', content: 'Doporucujeme mit vlastni externi HDD/SSD, na kterem mate nainstalovane hry, ktere si muzete prinest a pote vase hry spustit nainstalovane na nem.' },
+      { title: 'Opatření pro stahování', content: 'Kvůli přetížení sítě jsme museli udělat opatření pro stahování her. Pro snížení přetížení sítě si zkontrolujte a případně zapněte příslušné nastavení na Steamu na školním počítači.' },
+      { title: 'Doporučení - vlastní disk', content: 'Doporučujeme mít vlastní externí HDD/SSD, na kterém máte nainstalované hry, které si můžete přinést a poté je spustit přímo z něj.' },
     ],
   },
   {
     id: 'zaverecne',
-    title: 'Zaverecne pokyny',
+    title: 'Závěrečné pokyny',
     rules: [
-      { title: 'Pravomoc organizatoru', content: 'Organizatori maji pravo resit jakekoli problemy nebo nesrovnalosti, aby zajistili plynuly prubeh akce a pohodu vsech ucastniku.' },
+      { title: 'Pravomoc organizátorů', content: 'Organizátoři mají právo řešit jakékoli problémy nebo nesrovnalosti, aby zajistili plynulý průběh akce a pohodu všech účastníků.' },
     ],
   },
 ]
@@ -81,23 +82,23 @@ export default function RulesPage() {
     .filter((cat) => cat.rules.length > 0)
 
   return (
-    <div className="container" style={{ paddingTop: 'calc(var(--header-height) + 60px)', paddingBottom: '80px' }}>
-      <div className="page-header" style={{ paddingTop: 0, textAlign: 'left' }}>
-        <span className="badge">Pravidla</span>
-        <h1 className="page-title" style={{ marginTop: '16px' }}>Pravidla akce</h1>
-        <p className="page-description" style={{ marginLeft: 0, textAlign: 'left' }}>
-          Pravidla platna pro vsechny ucastniky Mikulasske LAN Party 2025. Prectete si je prosim pozorne.
+    <div className={shell.page}>
+      <div className={shell.pageHeader}>
+        <span className={shell.eyebrow}>Pravidla</span>
+        <h1 className={shell.title}>Pravidla akce</h1>
+        <p className={shell.description}>
+          Pravidla platná pro všechny účastníky Mikulášské LAN Party 2025. Přečtěte si je prosím pozorně.
         </p>
       </div>
 
-      <div className="two-col">
-        <aside className="sticky-sidebar">
-          <nav className="toc">
-            <h2 className="toc-title">Kategorie</h2>
-            <ul className="toc-list">
+      <div className={shell.twoCol}>
+        <aside className={shell.stickySidebar}>
+          <nav className={shell.toc}>
+            <h2 className={shell.tocTitle}>Kategorie</h2>
+            <ul className={shell.tocList}>
               {tocItems.map((item) => (
                 <li key={item.id}>
-                  <a href={`#${item.id}`} className="toc-link">{item.label}</a>
+                  <a href={`#${item.id}`} className={shell.tocLink}>{item.label}</a>
                 </li>
               ))}
             </ul>
@@ -105,34 +106,34 @@ export default function RulesPage() {
         </aside>
 
         <div>
-          <div className="search-wrapper" style={{ marginBottom: '40px' }}>
-            <div className="icon-placeholder sm search-icon" aria-hidden="true" />
+          <div className={shell.search}>
+            <span className={shell.searchIcon} aria-hidden="true" />
             <input
               type="text"
-              className="input search-input"
+              className={shell.input}
               placeholder="Hledat v pravidlech..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
             />
           </div>
 
-          <div className="alert alert-warning" style={{ marginBottom: '32px' }}>
-            <div className="icon-placeholder" aria-hidden="true" />
+          <div className={`${shell.alert} ${shell.leadAlert}`}>
+            <div className={shell.alertIcon} aria-hidden="true">!</div>
             <div>
-              <p className="alert-title">Dulezite</p>
-              <p className="alert-description">
-                Dodrzovani pravidel je povinne pro vsechny ucastniky. Organizatori maji pravo resit jakekoli problemy pro zajisteni plynuleho prubehu akce.
+              <p className={shell.alertTitle}>Důležité</p>
+              <p className={shell.alertDescription}>
+                Dodržování pravidel je povinné pro všechny účastníky. Organizátoři mají právo řešit jakékoli problémy pro zajištění plynulého průběhu akce.
               </p>
             </div>
           </div>
 
           {filteredCategories.length === 0 ? (
-            <p style={{ color: 'var(--text-color-darker)' }}>Zadne vysledky pro zadany hledany vyraz.</p>
+            <p className={shell.empty}>Žádné výsledky pro zadaný hledaný výraz.</p>
           ) : (
             filteredCategories.map((cat) => (
-              <section key={cat.id} id={cat.id} style={{ marginBottom: '32px' }}>
-                <h2 className="section-title" style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
-                  <div className="icon-placeholder" aria-hidden="true" />
+              <section key={cat.id} id={cat.id} className={shell.section}>
+                <h2 className={shell.sectionTitle}>
+                  <span className={shell.sectionMark} aria-hidden="true" />
                   {cat.title}
                 </h2>
                 <Accordion>

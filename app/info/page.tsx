@@ -1,13 +1,15 @@
 'use client'
 
 import { useState } from 'react'
+import shell from '../page-shell.module.scss'
+import styles from './info.module.scss'
 
 const tocItems = [
-  { id: 'ucitele', label: 'Ucitele' },
-  { id: 'spravci', label: 'Spravci LAN Party systemu' },
-  { id: 'grillmasteri', label: 'Grillmasteri' },
+  { id: 'ucitele', label: 'Učitelé' },
+  { id: 'spravci', label: 'Správci LAN Party systému' },
+  { id: 'grillmasteri', label: 'Grillmasteři' },
   { id: 'kontakt', label: 'Kontakt' },
-  { id: 'stazeni', label: 'Stazeni PDF' },
+  { id: 'stazeni', label: 'Stažení PDF' },
 ]
 
 interface Organizer {
@@ -19,30 +21,36 @@ interface Organizer {
 }
 
 const organizers: Organizer[] = [
-  { name: 'Michaela Mudrochova', role: 'Ucitelka', phone: '+420 777 131 303', instagram: '@micha_cz', category: 'teacher' },
-  { name: 'Michal Mudroch Bures', role: 'Ucitel', phone: '+420 777 116 567', instagram: '@deathwalker_cz', category: 'teacher' },
-  { name: 'Sebastian Netolicky', role: 'Ucitel', instagram: '@internal_server_error.', category: 'teacher' },
-  { name: 'David Chlad', role: 'Ucitel', instagram: '@ampercz1', category: 'teacher' },
-  { name: 'Stanislav Skudrna', role: 'Spravce LAN Party systemu', instagram: '@aldiix', category: 'admin' },
-  { name: 'Serhii Yavorskyi', role: 'Spravce LAN Party systemu', instagram: '@_.yavorskiy.s._', category: 'admin' },
+  { name: 'Michaela Mudrochová', role: 'Učitelka', phone: '+420 777 131 303', instagram: '@micha_cz', category: 'teacher' },
+  { name: 'Michal Mudroch Bureš', role: 'Učitel', phone: '+420 777 116 567', instagram: '@deathwalker_cz', category: 'teacher' },
+  { name: 'Sebastian Netolický', role: 'Učitel', instagram: '@internal_server_error.', category: 'teacher' },
+  { name: 'David Chlad', role: 'Učitel', instagram: '@ampercz1', category: 'teacher' },
+  { name: 'Stanislav Škudrna', role: 'Správce LAN Party systému', instagram: '@aldiix', category: 'admin' },
+  { name: 'Serhii Yavorskyi', role: 'Správce LAN Party systému', instagram: '@_.yavorskiy.s._', category: 'admin' },
   { name: 'Jakub Fryc', role: 'Grillmaster', instagram: '@f0xiar', category: 'grillmaster' },
 ]
 
 function OrganizerCard({ org }: { org: Organizer }) {
+  const initials = org.name
+    .split(' ')
+    .map((part) => part[0])
+    .slice(0, 2)
+    .join('')
+
   return (
-    <div className="card organizer-card">
-      <div className="image-placeholder organizer-avatar">Avatar</div>
-      <h3 className="organizer-name">{org.name}</h3>
-      <p className="organizer-role">{org.role}</p>
+    <div className={`${shell.card} ${styles.organizerCard}`}>
+      <div className={styles.avatar} aria-hidden="true">{initials}</div>
+      <h3 className={styles.name}>{org.name}</h3>
+      <p className={styles.role}>{org.role}</p>
       {org.phone && (
-        <a href={`tel:${org.phone.replace(/\s/g, '')}`} className="organizer-contact">
-          <div className="icon-placeholder sm" aria-hidden="true" />
+        <a href={`tel:${org.phone.replace(/\s/g, '')}`} className={styles.contact}>
+          <span className={styles.contactMark} aria-hidden="true" />
           {org.phone}
         </a>
       )}
       {org.instagram && (
-        <p className="organizer-contact">
-          <div className="icon-placeholder sm" aria-hidden="true" />
+        <p className={styles.contact}>
+          <span className={styles.contactMark} aria-hidden="true" />
           {org.instagram}
         </p>
       )}
@@ -66,23 +74,23 @@ export default function InfoPage() {
   const filteredGrillmasters = filterOrg(grillmasters)
 
   return (
-    <div className="container" style={{ paddingTop: 'calc(var(--header-height) + 60px)', paddingBottom: '80px' }}>
-      <div className="page-header" style={{ paddingTop: 0, textAlign: 'left' }}>
-        <span className="badge">Informace</span>
-        <h1 className="page-title" style={{ marginTop: '16px' }}>Kompletni informace o akci</h1>
-        <p className="page-description" style={{ marginLeft: 0, textAlign: 'left' }}>
-          Vsechny informace z info PDF prepsane do prehledne webove podoby. Organizatori, kontakty a dulezite udaje na jednom miste.
+    <div className={shell.page}>
+      <div className={shell.pageHeader}>
+        <span className={shell.eyebrow}>Informace</span>
+        <h1 className={shell.title}>Kompletní informace o akci</h1>
+        <p className={shell.description}>
+          Všechny informace z info PDF přepsané do přehledné webové podoby. Organizátoři, kontakty a důležité údaje na jednom místě.
         </p>
       </div>
 
-      <div className="two-col">
-        <aside className="sticky-sidebar">
-          <nav className="toc">
-            <h2 className="toc-title">Obsah</h2>
-            <ul className="toc-list">
+      <div className={shell.twoCol}>
+        <aside className={shell.stickySidebar}>
+          <nav className={shell.toc}>
+            <h2 className={shell.tocTitle}>Obsah</h2>
+            <ul className={shell.tocList}>
               {tocItems.map((item) => (
                 <li key={item.id}>
-                  <a href={`#${item.id}`} className="toc-link">{item.label}</a>
+                  <a href={`#${item.id}`} className={shell.tocLink}>{item.label}</a>
                 </li>
               ))}
             </ul>
@@ -90,83 +98,82 @@ export default function InfoPage() {
         </aside>
 
         <div>
-          <div className="search-wrapper" style={{ marginBottom: '40px' }}>
-            <div className="icon-placeholder sm search-icon" aria-hidden="true" />
+          <div className={shell.search}>
+            <span className={shell.searchIcon} aria-hidden="true" />
             <input
               type="text"
-              className="input search-input"
-              placeholder="Hledat organizatory..."
+              className={shell.input}
+              placeholder="Hledat organizátory..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
             />
           </div>
 
-          <section id="ucitele" style={{ marginBottom: '48px' }}>
-            <h2 className="section-title" style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-              <div className="icon-placeholder" aria-hidden="true" />
-              Ucitele
+          <section id="ucitele" className={shell.section}>
+            <h2 className={shell.sectionTitle}>
+              <span className={shell.sectionMark} aria-hidden="true" />
+              Učitelé
             </h2>
             {filteredTeachers.length > 0 ? (
-              <div className="grid grid-2">
+              <div className={shell.grid2}>
                 {filteredTeachers.map((org) => (
                   <OrganizerCard key={org.name} org={org} />
                 ))}
               </div>
             ) : (
-              <p style={{ color: 'var(--text-color-darker)' }}>Zadne vysledky.</p>
+              <p className={shell.empty}>Žádné výsledky.</p>
             )}
           </section>
 
-          <section id="spravci" style={{ marginBottom: '48px' }}>
-            <h2 className="section-title" style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-              <div className="icon-placeholder" aria-hidden="true" />
-              Spravci LAN Party systemu
+          <section id="spravci" className={shell.section}>
+            <h2 className={shell.sectionTitle}>
+              <span className={shell.sectionMark} aria-hidden="true" />
+              Správci LAN Party systému
             </h2>
             {filteredAdmins.length > 0 ? (
-              <div className="grid grid-2">
+              <div className={shell.grid2}>
                 {filteredAdmins.map((org) => (
                   <OrganizerCard key={org.name} org={org} />
                 ))}
               </div>
             ) : (
-              <p style={{ color: 'var(--text-color-darker)' }}>Zadne vysledky.</p>
+              <p className={shell.empty}>Žádné výsledky.</p>
             )}
           </section>
 
-          <section id="grillmasteri" style={{ marginBottom: '48px' }}>
-            <h2 className="section-title" style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-              <div className="icon-placeholder" aria-hidden="true" />
-              Grillmasteri
+          <section id="grillmasteri" className={shell.section}>
+            <h2 className={shell.sectionTitle}>
+              <span className={shell.sectionMark} aria-hidden="true" />
+              Grillmasteři
             </h2>
             {filteredGrillmasters.length > 0 ? (
-              <div className="grid grid-2">
+              <div className={shell.grid2}>
                 {filteredGrillmasters.map((org) => (
                   <OrganizerCard key={org.name} org={org} />
                 ))}
               </div>
             ) : (
-              <p style={{ color: 'var(--text-color-darker)' }}>Zadne vysledky.</p>
+              <p className={shell.empty}>Žádné výsledky.</p>
             )}
-            <p style={{ color: 'var(--text-color-darker)', marginTop: '12px' }}>+ Misa :)</p>
+            <p className={styles.smallNote}>+ Misa :)</p>
           </section>
 
-          <section id="kontakt" style={{ marginBottom: '48px' }}>
-            <h2 className="section-title">Kontakt</h2>
-            <div className="card">
-              <p style={{ color: 'var(--text-color-secondary)', marginBottom: '12px' }}>
-                Pokud budete mit v prubehu akce nejaky problem (nebo budete mit hlad), nevahejte organizatory kontaktovat at osobne, tak na Discordu.
+          <section id="kontakt" className={shell.section}>
+            <h2 className={shell.sectionTitle}><span className={shell.sectionMark} aria-hidden="true" />Kontakt</h2>
+            <div className={`${shell.card} ${shell.copyCard}`}>
+              <p>
+                Pokud budete mít v průběhu akce nějaký problém (nebo budete mít hlad), neváhejte organizátory kontaktovat ať osobně, tak na Discordu.
               </p>
-              <p style={{ color: 'var(--text-color-secondary)' }}>
-                Pokud mate nejake dotazy, napiste na skolni Discord, nebo primo organizatorum.
+              <p>
+                Pokud máte nějaké dotazy, napište na školní Discord, nebo přímo organizátorům.
               </p>
             </div>
           </section>
 
           <section id="stazeni">
-            <h2 className="section-title">Stazeni PDF</h2>
-            <a href="/info.pdf" download className="btn btn-secondary">
-              <div className="icon-placeholder sm" aria-hidden="true" />
-              Stahnout originalni info.pdf
+            <h2 className={shell.sectionTitle}><span className={shell.sectionMark} aria-hidden="true" />Stažení PDF</h2>
+            <a href="/info.pdf" download className={`${shell.button} ${shell.secondaryButton}`}>
+              Stáhnout originální info.pdf
             </a>
           </section>
         </div>

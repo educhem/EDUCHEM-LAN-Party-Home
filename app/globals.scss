@@ -1,35 +1,32 @@
-@import url('https://fonts.googleapis.com/css2?family=Gabarito:wght@400;500;600;700&display=swap');
-
-// ======================
-// VARIABLES
-// ======================
+@import url('https://fonts.googleapis.com/css2?family=Gabarito:wght@400;500;600;700;800&display=swap');
 
 $accent-dark: #ffb303;
 $accent-light: #ff8300;
 $header-height: 70px;
 $container-width: 1200px;
-$radius: 12px;
+$radius: 8px;
 $radius-sm: 8px;
-
-// ======================
-// CSS CUSTOM PROPERTIES
-// ======================
 
 :root {
   --accent-color: #{$accent-dark};
   --accent-color-text: black;
   --accent-color-darker: #d39706;
-  --element-bg: #171717;
-  --element-bg-colored: #252115;
+  --accent-soft: rgba(255, 179, 3, 0.13);
+  --accent-line: rgba(255, 179, 3, 0.34);
+  --element-bg: #151515;
+  --element-bg-colored: #221d11;
   --bg: black;
   --background-bg: #101010;
-  --background-bg-2: #1c1c1c;
+  --background-bg-2: #1b1b1b;
   --text-color: #f3f3f3;
-  --text-color-darker: #afafaf;
-  --text-color-secondary: #e0e0e0;
+  --text-color-darker: #979797;
+  --text-color-secondary: #d7d7d7;
   --text-color-3: #2a2a2a;
+  --border-color: rgba(255, 255, 255, 0.1);
+  --shadow-color: rgba(0, 0, 0, 0.38);
   --error-color: #de2828;
   --error-background: #2c1717;
+  --warning-background: rgba(255, 179, 3, 0.12);
   
   --header-height: #{$header-height};
   --container-width: #{$container-width};
@@ -41,22 +38,23 @@ html.light {
   --accent-color: #{$accent-light};
   --accent-color-text: white;
   --accent-color-darker: #d96f01;
+  --accent-soft: rgba(255, 131, 0, 0.13);
+  --accent-line: rgba(255, 131, 0, 0.28);
   --element-bg: white;
-  --element-bg-colored: #ffe8cc;
+  --element-bg-colored: #fff1df;
   --bg: white;
-  --background-bg: #f8f6f1;
-  --background-bg-2: #fffdf7;
+  --background-bg: #f6f4ee;
+  --background-bg-2: #fffdf8;
   --text-color: #0c0c0c;
-  --text-color-darker: #afafaf;
-  --text-color-secondary: #606060;
-  --text-color-3: #e3e3e3;
+  --text-color-darker: #76716a;
+  --text-color-secondary: #4f4b45;
+  --text-color-3: #e8e2d8;
+  --border-color: rgba(24, 20, 14, 0.12);
+  --shadow-color: rgba(64, 45, 20, 0.12);
   --error-color: #ff0000;
-  --error-background: #ffb7b7;
+  --error-background: #fff0f0;
+  --warning-background: rgba(255, 131, 0, 0.12);
 }
-
-// ======================
-// RESET
-// ======================
 
 *,
 *::before,
@@ -73,9 +71,14 @@ html {
 body {
   font-family: 'Gabarito', system-ui, sans-serif;
   background-color: var(--background-bg);
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 48px 48px;
   color: var(--text-color);
   line-height: 1.6;
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 a {
@@ -100,10 +103,6 @@ img {
   display: block;
 }
 
-// ======================
-// UTILITIES
-// ======================
-
 .container {
   width: 100%;
   max-width: var(--container-width);
@@ -120,31 +119,4 @@ img {
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
   border: 0;
-}
-
-// ======================
-// PLACEHOLDERS
-// ======================
-
-.iconPlaceholder {
-  width: 24px;
-  height: 24px;
-  background-color: var(--text-color-darker);
-  border-radius: 4px;
-  opacity: 0.5;
-  flex-shrink: 0;
-  
-  &.sm { width: 16px; height: 16px; }
-  &.lg { width: 32px; height: 32px; }
-  &.xl { width: 48px; height: 48px; }
-}
-
-.imagePlaceholder {
-  background: linear-gradient(135deg, var(--background-bg-2) 0%, var(--element-bg) 100%);
-  border-radius: var(--radius);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--text-color-darker);
-  font-size: 0.875rem;
 }

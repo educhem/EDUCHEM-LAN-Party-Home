@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     default: 'EDUCHEM LAN Party 2025',
     template: '%s | EDUCHEM LAN Party 2025',
   },
-  description: 'Mikulasska LAN Party 2025 na SS EDUCHEM v Moste. 5.-6. prosince, vstup 100 Kc. Prijd si zahrat!',
+  description: 'Mikulášská LAN Party 2025 na SŠ EDUCHEM v Mostě. 5.-6. prosince, vstup 100 Kč. Přijď si zahrát!',
 }
 
 export const viewport: Viewport = {

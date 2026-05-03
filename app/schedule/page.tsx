@@ -1,30 +1,35 @@
+import shell from '../page-shell.module.scss'
+import styles from './schedule.module.scss'
+
 const timelineItems = [
-  { time: 'Patek 5.12. - 12:00', title: 'Prichod a setup', description: 'Otevreni budovy, prichod ucastniku, zapojeni vlastnich setupu a prihlaseni ke skolnim PC.' },
-  { time: 'Patek 5.12. - odpoledne', title: 'Hrani a akce', description: 'Volne hrani, turnaje a spolecne aktivity. Muzete prijit/odejit kdykoliv (nahlaste uciteli).' },
-  { time: 'Patek 5.12. - vecer', title: 'Grilovani', description: 'Jidlo na grilovani a piti v cene vstupneho. Presny cas bude upresnena miste.' },
-  { time: 'Patek 5.12. - noc', title: 'Nocni hrani', description: 'Pokracovani v hrani pres noc. Snizte prosim hlasitost behem nocniho klidu.' },
-  { time: 'Sobota 6.12. - rano', title: 'Pokracovani', description: 'Ranni hrani a posledni sance si zahrat s kamarady.' },
-  { time: 'Sobota 6.12. - 14:00', title: 'Konec akce', description: 'Ukonceni akce, odpojeni setupu, uklid prostoru. Po sobe si uklidte!' },
+  { time: 'Pátek 5.12. - 12:00', title: 'Příchod a setup', description: 'Otevření budovy, příchod účastníků, zapojení vlastních setupů a přihlášení ke školním PC.' },
+  { time: 'Pátek 5.12. - odpoledne', title: 'Hraní a akce', description: 'Volné hraní, turnaje a společné aktivity. Můžete přijít/odejít kdykoliv (nahlaste učiteli).' },
+  { time: 'Pátek 5.12. - večer', title: 'Grilování', description: 'Jídlo na grilování a pití v ceně vstupného. Přesný čas bude upřesněn na místě.' },
+  { time: 'Pátek 5.12. - noc', title: 'Noční hraní', description: 'Pokračování v hraní přes noc. Snižte prosím hlasitost během nočního klidu.' },
+  { time: 'Sobota 6.12. - ráno', title: 'Pokračování', description: 'Ranní hraní a poslední šance si zahrát s kamarády.' },
+  { time: 'Sobota 6.12. - 14:00', title: 'Konec akce', description: 'Ukončení akce, odpojení setupů, úklid prostoru. Po sobě si ukliďte!' },
 ]
 
 export default function SchedulePage() {
   return (
-    <div className="container" style={{ paddingTop: 'calc(var(--header-height) + 60px)', paddingBottom: '80px', maxWidth: '800px' }}>
-      <div className="page-header" style={{ paddingTop: 0, textAlign: 'left' }}>
-        <span className="badge">Harmonogram</span>
-        <h1 className="page-title" style={{ marginTop: '16px' }}>Orientacni harmonogram</h1>
-        <p className="page-description" style={{ marginLeft: 0, textAlign: 'left' }}>
-          Casovy prehled prubehu akce. Presne casy jsou orientacni a mohou se menit.
+    <div className={`${shell.page} ${shell.narrow}`}>
+      <div className={shell.pageHeader}>
+        <span className={shell.eyebrow}>Harmonogram</span>
+        <h1 className={shell.title}>Orientační harmonogram</h1>
+        <p className={shell.description}>
+          Časový přehled průběhu akce. Přesné časy jsou orientační a mohou se měnit.
         </p>
       </div>
 
-      <div className="timeline">
+      <div className={styles.timeline}>
         {timelineItems.map((item, idx) => (
-          <div key={idx} className="timeline-item">
-            <div className="timeline-dot" />
-            <p className="timeline-time">{item.time}</p>
-            <h3 className="timeline-title">{item.title}</h3>
-            <p className="timeline-description">{item.description}</p>
+          <div key={idx} className={styles.item}>
+            <div className={styles.dot} />
+            <div className={`${shell.card} ${styles.content}`}>
+              <p className={styles.time}>{item.time}</p>
+              <h3 className={styles.title}>{item.title}</h3>
+              <p className={styles.description}>{item.description}</p>
+            </div>
           </div>
         ))}
       </div>

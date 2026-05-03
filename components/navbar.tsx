@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useState } from 'react'
 import { useTheme } from './theme-provider'
+import styles from './navbar.module.scss'
 
 const links = [
   { href: '/', label: 'Home' },
@@ -21,50 +22,50 @@ export function Navbar() {
 
   return (
     <>
-      <header className="header">
-        <Link href="/" className="header-logo">
-          <div className="icon-placeholder lg" aria-hidden="true" />
+      <header className={styles.header}>
+        <Link href="/" className={styles.logo}>
+          <span className={styles.logoMark} aria-hidden="true">LP</span>
           <span>LAN Party</span>
         </Link>
 
-        <nav className="header-nav">
+        <nav className={styles.nav}>
           {links.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className={`header-nav-link${pathname === link.href ? ' active' : ''}`}
+              className={`${styles.navLink}${pathname === link.href ? ` ${styles.active}` : ''}`}
             >
               {link.label}
             </Link>
           ))}
         </nav>
 
-        <div className="header-actions">
+        <div className={styles.actions}>
           <button
             onClick={toggleTheme}
-            className="theme-toggle"
-            aria-label={theme === 'dark' ? 'Prepnout na svetly rezim' : 'Prepnout na tmavy rezim'}
+            className={styles.iconButton}
+            aria-label={theme === 'dark' ? 'Přepnout na světlý režim' : 'Přepnout na tmavý režim'}
           >
-            <div className="icon-placeholder" aria-hidden="true" />
+            <span className={styles.themeIcon} aria-hidden="true" />
           </button>
           <button
-            className="mobile-menu-btn"
+            className={`${styles.iconButton} ${styles.mobileButton}`}
             onClick={() => setOpen(!open)}
-            aria-label={open ? 'Zavrit menu' : 'Otevrit menu'}
+            aria-label={open ? 'Zavřít menu' : 'Otevřít menu'}
             aria-expanded={open}
           >
-            <div className="icon-placeholder" aria-hidden="true" />
+            <span className={styles.menuIcon} aria-hidden="true" />
           </button>
         </div>
       </header>
 
-      <div className={`mobile-menu${open ? ' open' : ''}`}>
+      <div className={`${styles.mobileMenu}${open ? ` ${styles.mobileMenuOpen}` : ''}`}>
         {links.map((link) => (
           <Link
             key={link.href}
             href={link.href}
             onClick={() => setOpen(false)}
-            className="mobile-menu-link"
+            className={`${styles.mobileLink}${pathname === link.href ? ` ${styles.active}` : ''}`}
           >
             {link.label}
           </Link>

@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import styles from './back-to-top.module.scss'
 
 export function BackToTop() {
   const [visible, setVisible] = useState(false)
@@ -15,11 +16,11 @@ export function BackToTop() {
 
   return (
     <button
-      className={`back-to-top${visible ? ' visible' : ''}`}
+      className={`${styles.button}${visible ? ` ${styles.visible}` : ''}`}
       onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-      aria-label="Zpet nahoru"
+      aria-label="Zpět nahoru"
     >
-      <div className="icon-placeholder" aria-hidden="true" />
+      <span className={styles.arrow} aria-hidden="true" />
     </button>
   )
 }

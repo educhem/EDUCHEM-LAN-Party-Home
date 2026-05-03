@@ -1,83 +1,81 @@
 'use client'
 
 import { Accordion, AccordionItem } from '@/components/accordion'
+import shell from '../page-shell.module.scss'
+import styles from './reservation.module.scss'
 
 const steps = [
   {
-    title: 'Zaplazte vstupne 100 Kc',
+    title: 'Zaplaťte vstupné 100 Kč',
     details: [
-      'Cislo uctu: 2603033660/2010',
-      'Castka: 100,00 CZK',
-      'Zprava pro prijemce: JMENO PRIJMENI, TRIDA, EMAIL',
-      'Dodrzujte prosim tento format.',
-      'Termin: do 4.12. 20:00',
-      'Muzete zaplatit rucnim zadanim, nebo pomoci QR kodu.',
+      'Číslo účtu: 2603033660/2010',
+      'Částka: 100,00 CZK',
+      'Zpráva pro příjemce: JMÉNO PŘÍJMENÍ, TŘÍDA, EMAIL',
+      'Dodržujte prosím tento formát.',
+      'Termín: do 4.12. 20:00',
+      'Můžete zaplatit ručním zadáním, nebo pomocí QR kódu.',
     ],
   },
   {
-    title: 'Obdrzite pristupove udaje',
+    title: 'Obdržíte přístupové údaje',
     details: [
-      'Jakmile zaplatite, prijdou vam udaje na email, ktery jste uvedli ve zprave platby.',
-      'Tyto udaje pouzijete k prihlaseni do LAN Party systemu.',
+      'Jakmile zaplatíte, přijdou vám údaje na email, který jste uvedli ve zprávě platby.',
+      'Tyto údaje použijete k přihlášení do LAN Party systému.',
     ],
   },
   {
-    title: 'Rezervujte si misto v systemu',
+    title: 'Rezervujte si místo v systému',
     details: [
-      'V systemu na strance /app/reservations si muzete rezervovat misto nebo pocitac.',
-      'Pokud si neplanujete brat sebou PC ani byt na skolnim PC, nemusite si misto rezervovat.',
+      'V systému na stránce /app/reservations si můžete rezervovat místo nebo počítač.',
+      'Pokud si neplánujete brát s sebou PC ani být na školním PC, nemusíte si místo rezervovat.',
     ],
   },
 ]
 
 const faqItems = [
   {
-    question: 'Musim si rezervovat misto?',
-    answer: 'Pokud si neplanujete brat si sebou PC, ani byt na skolnim PC, nemusite si misto rezervovat.',
+    question: 'Musím si rezervovat místo?',
+    answer: 'Pokud si neplánujete brát si s sebou PC, ani být na školním PC, nemusíte si místo rezervovat.',
   },
   {
-    question: 'Muze se moje misto zmenit?',
-    answer: 'Ano, muze se stat, ze vase misto bude zmeneno, protoze kolikrat jeste probehnou upravy (nekdo si rozmysli, ze chce sedet u sveho kamarada a pak se to musi preskladat). Casto se spoluzaci davaji vedle sebe / do stejnych trid.',
+    question: 'Může se moje místo změnit?',
+    answer: 'Ano, může se stát, že vaše místo bude změněno, protože kolikrát ještě proběhnou úpravy (někdo si rozmyslí, že chce sedět u svého kamaráda a pak se to musí přeskládat). Často se spolužáci dávají vedle sebe / do stejných tříd.',
   },
   {
-    question: 'Co kdyz budu mit problem se systemem?',
-    answer: 'V pripade jakehokoli problemu se systemem kontaktujte spravce: Stanislav Skudrna (@aldiix) nebo Serhii Yavorskyi (@_.yavorskiy.s._).',
+    question: 'Co když budu mít problém se systémem?',
+    answer: 'V případě jakéhokoli problému se systémem kontaktujte správce: Stanislav Škudrna (@aldiix) nebo Serhii Yavorskyi (@_.yavorskiy.s._).',
   },
   {
-    question: 'Mohu prijit a odejit kdykoliv?',
-    answer: 'Ano, muzete prijit/odejit kdykoliv behem akce. Odchod z budovy ale musite dat vedet nekomu z ucitelu.',
+    question: 'Mohu přijít a odejít kdykoliv?',
+    answer: 'Ano, můžete přijít/odejít kdykoliv během akce. Odchod z budovy ale musíte dát vědět někomu z učitelů.',
   },
   {
-    question: 'Do kdy musim zaplatit?',
-    answer: 'Vstupne 100 Kc je nutne zaplatit do 4.12. 20:00.',
+    question: 'Do kdy musím zaplatit?',
+    answer: 'Vstupné 100 Kč je nutné zaplatit do 4.12. 20:00.',
   },
 ]
 
 export default function ReservationPage() {
   return (
-    <div className="container" style={{ paddingTop: 'calc(var(--header-height) + 60px)', paddingBottom: '80px', maxWidth: '800px' }}>
-      <div className="page-header" style={{ paddingTop: 0, textAlign: 'left' }}>
-        <span className="badge">Rezervace</span>
-        <h1 className="page-title" style={{ marginTop: '16px' }}>Jak probiha rezervace</h1>
-        <p className="page-description" style={{ marginLeft: 0, textAlign: 'left' }}>
-          Krokovy pruvodce procesem platby a rezervace mista na LAN Party.
+    <div className={`${shell.page} ${shell.narrow}`}>
+      <div className={shell.pageHeader}>
+        <span className={shell.eyebrow}>Rezervace</span>
+        <h1 className={shell.title}>Jak probíhá rezervace</h1>
+        <p className={shell.description}>
+          Krokový průvodce procesem platby a rezervace místa na LAN Party.
         </p>
       </div>
 
-      {/* Steps */}
-      <div className="steps" style={{ marginBottom: '48px' }}>
+      <div className={styles.steps}>
         {steps.map((step, idx) => (
-          <div key={idx} className="step">
-            <div className="step-number">{idx + 1}</div>
-            <div className="step-content">
-              <h3 className="step-title" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <div className="icon-placeholder sm" aria-hidden="true" />
-                {step.title}
-              </h3>
-              <ul style={{ marginTop: '8px' }}>
+          <div key={idx} className={`${shell.card} ${styles.step}`}>
+            <div className={styles.number}>{idx + 1}</div>
+            <div>
+              <h3 className={styles.stepTitle}>{step.title}</h3>
+              <ul className={styles.details}>
                 {step.details.map((detail, i) => (
-                  <li key={i} className="step-description" style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', marginBottom: '4px' }}>
-                    <span style={{ marginTop: '8px', width: '6px', height: '6px', borderRadius: '50%', backgroundColor: 'var(--accent-color)', flexShrink: 0 }} />
+                  <li key={i} className={styles.detail}>
+                    <span className={styles.bullet} aria-hidden="true" />
                     {detail}
                   </li>
                 ))}
@@ -87,44 +85,42 @@ export default function ReservationPage() {
         ))}
       </div>
 
-      {/* Alerts */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', marginBottom: '48px' }}>
-        <div className="alert alert-warning">
-          <div className="icon-placeholder" aria-hidden="true" />
+      <div className={styles.alerts}>
+        <div className={shell.alert}>
+          <div className={shell.alertIcon} aria-hidden="true">!</div>
           <div>
-            <p className="alert-title">Platba QR kodem</p>
-            <p className="alert-description">
-              Vstupne muzete zaplatit pomoci QR kodu nebo rucnim zadanim platebnich udaju. QR kod najdete v originalnim info PDF.
+            <p className={shell.alertTitle}>Platba QR kódem</p>
+            <p className={shell.alertDescription}>
+              Vstupné můžete zaplatit pomocí QR kódu nebo ručním zadáním platebních údajů. QR kód najdete v originálním info PDF.
             </p>
           </div>
         </div>
 
-        <div className="alert alert-error">
-          <div className="icon-placeholder" aria-hidden="true" />
+        <div className={`${shell.alert} ${shell.alertError}`}>
+          <div className={shell.alertIcon} aria-hidden="true">!</div>
           <div>
-            <p className="alert-title">Dulezite upozorneni</p>
-            <p className="alert-description">
-              Ve zprave pro prijemce dodrzujte format: JMENO PRIJMENI, TRIDA, EMAIL. Bez spravneho formatu nemusi byt platba prirazena.
+            <p className={shell.alertTitle}>Důležité upozornění</p>
+            <p className={shell.alertDescription}>
+              Ve zprávě pro příjemce dodržujte formát: JMÉNO PŘÍJMENÍ, TŘÍDA, EMAIL. Bez správného formátu nemusí být platba přiřazena.
             </p>
           </div>
         </div>
 
-        <div className="alert alert-warning">
-          <div className="icon-placeholder" aria-hidden="true" />
+        <div className={shell.alert}>
+          <div className={shell.alertIcon} aria-hidden="true">!</div>
           <div>
-            <p className="alert-title">Zmena mista</p>
-            <p className="alert-description">
-              Vase misto muze byt zmeneno, pokud probihaji upravy (preskladani spoluzaku do stejnych trid apod.). Sledujte aktualni stav v systemu.
+            <p className={shell.alertTitle}>Změna místa</p>
+            <p className={shell.alertDescription}>
+              Vaše místo může být změněno, pokud probíhají úpravy (přeskládání spolužáků do stejných tříd apod.). Sledujte aktuální stav v systému.
             </p>
           </div>
         </div>
       </div>
 
-      {/* FAQ */}
       <section>
-        <h2 className="section-title" style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-          <div className="icon-placeholder" aria-hidden="true" />
-          Caste dotazy k rezervaci
+        <h2 className={shell.sectionTitle}>
+          <span className={shell.sectionMark} aria-hidden="true" />
+          Časté dotazy k rezervaci
         </h2>
         <Accordion>
           {faqItems.map((item, idx) => (
