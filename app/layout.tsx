@@ -11,6 +11,14 @@ export const metadata: Metadata = {
         template: '%s | Summer LAN Party 2026',
     },
     description: 'Summer LAN Party 2026 na SŠ EDUCHEM v Mostě. 5.-6. června, vstup 100 Kč.',
+    robots: {
+        index: false,
+        follow: false,
+        googleBot: {
+            index: false,
+            follow: false,
+        },
+    },
 }
 
 export const viewport: Viewport = {
