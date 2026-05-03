@@ -2,12 +2,12 @@ import shell from '../page-shell.module.scss'
 import styles from './schedule.module.scss'
 
 const timelineItems = [
-  { time: 'Pátek 5.12. - 12:00', title: 'Příchod a setup', description: 'Otevření budovy, příchod účastníků, zapojení vlastních setupů a přihlášení ke školním PC.' },
-  { time: 'Pátek 5.12. - odpoledne', title: 'Hraní a akce', description: 'Volné hraní, turnaje a společné aktivity. Můžete přijít/odejít kdykoliv (nahlaste učiteli).' },
-  { time: 'Pátek 5.12. - večer', title: 'Grilování', description: 'Jídlo na grilování a pití v ceně vstupného. Přesný čas bude upřesněn na místě.' },
-  { time: 'Pátek 5.12. - noc', title: 'Noční hraní', description: 'Pokračování v hraní přes noc. Snižte prosím hlasitost během nočního klidu.' },
-  { time: 'Sobota 6.12. - ráno', title: 'Pokračování', description: 'Ranní hraní a poslední šance si zahrát s kamarády.' },
-  { time: 'Sobota 6.12. - 14:00', title: 'Konec akce', description: 'Ukončení akce, odpojení setupů, úklid prostoru. Po sobě si ukliďte!' },
+  { time: 'Pátek 5.6. - 12:00', title: 'Začátek akce', description: 'Otevření budovy, příchod účastníků, zapojení vlastních setupů a přihlášení ke školním PC.' },
+  { time: 'Pátek 5.6. - odpoledne', title: 'Rezervace a hraní', description: 'Volné hraní, rezervace míst v LAN Party systému a společné aktivity.' },
+  { time: 'Pátek 5.6. - večer', title: 'Grilování', description: 'Jídlo na grilování a pití je v ceně vstupného. Jídlo vždy vydává grillmaster.' },
+  { time: 'Pátek 5.6. - noc', title: 'Noční hraní', description: 'Pokračování v hraní přes noc. Snižte prosím hlasitost během nočního klidu.' },
+  { time: 'Sobota 6.6. - ráno', title: 'Pokračování', description: 'Ranní hraní a poslední šance si zahrát s kamarády.' },
+  { time: 'Sobota 6.6. - 14:00', title: 'Konec akce', description: 'Ukončení akce, odpojení setupů a úklid prostoru. Po sobě si ukliďte.' },
 ]
 
 export default function SchedulePage() {
@@ -17,7 +17,7 @@ export default function SchedulePage() {
         <span className={shell.eyebrow}>Harmonogram</span>
         <h1 className={shell.title}>Orientační harmonogram</h1>
         <p className={shell.description}>
-          Časový přehled průběhu akce. Přesné časy jsou orientační a mohou se měnit.
+          Akce probíhá od 5.6. 12:00 do 6.6. 14:00. Časy jsou orientační a mohou se měnit.
         </p>
       </div>
 

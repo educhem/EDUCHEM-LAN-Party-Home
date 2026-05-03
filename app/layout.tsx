@@ -7,10 +7,10 @@ import './globals.scss'
 
 export const metadata: Metadata = {
   title: {
-    default: 'EDUCHEM LAN Party 2025',
-    template: '%s | EDUCHEM LAN Party 2025',
+    default: 'Summer LAN Party 2026',
+    template: '%s | Summer LAN Party 2026',
   },
-  description: 'Mikulášská LAN Party 2025 na SŠ EDUCHEM v Mostě. 5.-6. prosince, vstup 100 Kč. Přijď si zahrát!',
+  description: 'Summer LAN Party 2026 na SŠ EDUCHEM v Mostě. 5.-6. června, vstup 100 Kč.',
 }
 
 export const viewport: Viewport = {

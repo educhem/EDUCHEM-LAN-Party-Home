@@ -12,15 +12,15 @@ const steps = [
       'Částka: 100,00 CZK',
       'Zpráva pro příjemce: JMÉNO PŘÍJMENÍ, TŘÍDA, EMAIL',
       'Dodržujte prosím tento formát.',
-      'Termín: do 4.12. 20:00',
+      'Termín: do 4.6. 20:00',
       'Můžete zaplatit ručním zadáním, nebo pomocí QR kódu.',
     ],
   },
   {
     title: 'Obdržíte přístupové údaje',
     details: [
-      'Jakmile zaplatíte, přijdou vám údaje na email, který jste uvedli ve zprávě platby.',
-      'Tyto údaje použijete k přihlášení do LAN Party systému.',
+      'Jakmile zaplatíte, budete mít možnost rezervovat své místo v LAN Party systému.',
+      'Přístupové údaje vám přijdou do emailu, který jste uvedli ve zprávě platby.',
     ],
   },
   {
@@ -35,11 +35,11 @@ const steps = [
 const faqItems = [
   {
     question: 'Musím si rezervovat místo?',
-    answer: 'Pokud si neplánujete brát si s sebou PC, ani být na školním PC, nemusíte si místo rezervovat.',
+    answer: 'Kvůli velkému počtu účastníků je ideální rezervovat si počítač nebo místo pro vlastní setup. Pokud si neplánujete brát s sebou PC ani být na školním PC, nemusíte si místo rezervovat.',
   },
   {
     question: 'Může se moje místo změnit?',
-    answer: 'Ano, může se stát, že vaše místo bude změněno, protože kolikrát ještě proběhnou úpravy (někdo si rozmyslí, že chce sedět u svého kamaráda a pak se to musí přeskládat). Často se spolužáci dávají vedle sebe / do stejných tříd.',
+    answer: 'Ano, může se stát, že vaše místo bude změněno, protože ještě mohou proběhnout úpravy. Často dáváme spolužáky vedle sebe nebo do stejných tříd.',
   },
   {
     question: 'Co když budu mít problém se systémem?',
@@ -47,11 +47,11 @@ const faqItems = [
   },
   {
     question: 'Mohu přijít a odejít kdykoliv?',
-    answer: 'Ano, můžete přijít/odejít kdykoliv během akce. Odchod z budovy ale musíte dát vědět někomu z učitelů.',
+    answer: 'Ano, můžete přijít/odejít kdykoliv během akce. Odchod ale musíte dát vědět někomu z učitelů, ideálně napsat na školní Discord.',
   },
   {
     question: 'Do kdy musím zaplatit?',
-    answer: 'Vstupné 100 Kč je nutné zaplatit do 4.12. 20:00.',
+    answer: 'Vstupné 100 Kč je nutné zaplatit do 4.6. 20:00.',
   },
 ]
 
@@ -60,9 +60,9 @@ export default function ReservationPage() {
     <div className={`${shell.page} ${shell.narrow}`}>
       <div className={shell.pageHeader}>
         <span className={shell.eyebrow}>Rezervace</span>
-        <h1 className={shell.title}>Jak probíhá rezervace</h1>
+        <h1 className={shell.title}>Systém LAN Party</h1>
         <p className={shell.description}>
-          Krokový průvodce procesem platby a rezervace místa na LAN Party.
+          Rezervace je určená pro účastníky, kteří chtějí mít jistotu školního PC nebo místa pro vlastní setup.
         </p>
       </div>
 
@@ -91,7 +91,7 @@ export default function ReservationPage() {
           <div>
             <p className={shell.alertTitle}>Platba QR kódem</p>
             <p className={shell.alertDescription}>
-              Vstupné můžete zaplatit pomocí QR kódu nebo ručním zadáním platebních údajů. QR kód najdete v originálním info PDF.
+              Vstupné můžete zaplatit pomocí QR kódu nebo ručním zadáním platebních údajů. Údaje jsou uvedené v originálním info PDF.
             </p>
           </div>
         </div>
@@ -111,7 +111,7 @@ export default function ReservationPage() {
           <div>
             <p className={shell.alertTitle}>Změna místa</p>
             <p className={shell.alertDescription}>
-              Vaše místo může být změněno, pokud probíhají úpravy (přeskládání spolužáků do stejných tříd apod.). Sledujte aktuální stav v systému.
+              Vaše místo může být změněno kvůli úpravám rozložení, například když někdo chce sedět u kamaráda nebo když dáváme spolužáky vedle sebe.
             </p>
           </div>
         </div>

@@ -11,13 +11,13 @@ export default function HomePage() {
         </div>
         <div className={styles.heroOverlay} />
         <div className={styles.heroContent}>
-          <span className={shell.eyebrow}>5.-6. prosince 2025</span>
+          <span className={shell.eyebrow}>5.-6. června 2026</span>
           <h1 className={styles.heroTitle}>
-            Mikulášská
+            Summer
             <span className={styles.heroAccent}>LAN Party</span>
           </h1>
           <p className={styles.heroDescription}>
-            SŠ EDUCHEM, Eduarda Basse 1142, 434 01 Most. Přijď si zahrát, grilovat a užít skvělou atmosféru s kamarády!
+            SŠ EDUCHEM, Eduarda Basse 1142, 434 01 Most. Přijď si zahrát, rezervovat si místo v LAN Party systému a užít letní akci s kamarády.
           </p>
           <div className={styles.heroButtons}>
             <Link href="/reservation" className={`${shell.button} ${shell.primaryButton}`}>
@@ -36,11 +36,11 @@ export default function HomePage() {
           <div className={styles.infoGrid}>
             <div className={`${shell.card} ${styles.infoCard}`}>
               <p className={styles.infoKicker}>Datum</p>
-              <p className={styles.infoValue}>5.-6. 12. 2025</p>
+              <p className={styles.infoValue}>5.-6. 6. 2026</p>
             </div>
             <div className={`${shell.card} ${styles.infoCard}`}>
               <p className={styles.infoKicker}>Místo</p>
-              <p className={styles.infoValue}>SS EDUCHEM</p>
+              <p className={styles.infoValue}>SŠ EDUCHEM</p>
             </div>
             <div className={`${shell.card} ${styles.infoCard}`}>
               <p className={styles.infoKicker}>Čas</p>
@@ -53,10 +53,10 @@ export default function HomePage() {
           </div>
 
           <div className={styles.feature}>
-            <img src="/images/lan-party.jpg" alt="Herni zázemí LAN party" />
+            <img src="/images/lan-party.jpg" alt="Herní zázemí LAN party" />
             <div className={styles.featureCaption}>
               <strong>Jedna noc, jedna síť, hodně her.</strong>
-              <span>Školní PC, vlastní setupy, společný prostor a večerní grilování.</span>
+              <span>Školní PC, vlastní setupy, společný prostor a grilování v ceně vstupného.</span>
             </div>
           </div>
         </div>
@@ -81,7 +81,7 @@ export default function HomePage() {
                 <div>
                   <h3 className={styles.stepTitle}>Obdržet přístup</h3>
                   <p className={styles.stepText}>
-                    Po zaplacení vám přijde email s přístupovými údaji do našeho rezervačního systému.
+                    Jakmile zaplatíte, přijdou vám přístupové údaje do emailu uvedeného ve zprávě platby.
                   </p>
                 </div>
               </div>
@@ -90,16 +90,16 @@ export default function HomePage() {
                 <div>
                   <h3 className={styles.stepTitle}>Rezervovat místo</h3>
                   <p className={styles.stepText}>
-                    V systému si můžete rezervovat PC nebo místo pro vlastní setup.
+                    V systému si můžete rezervovat školní PC nebo místo pro vlastní setup.
                   </p>
                 </div>
               </div>
               <div className={styles.step}>
                 <div className={styles.stepNumber}>4</div>
                 <div>
-                  <h3 className={styles.stepTitle}>Přijít a užít si!</h3>
+                  <h3 className={styles.stepTitle}>Přijít a užít si</h3>
                   <p className={styles.stepText}>
-                    5. prosince od 12:00 dorazte na SŠ EDUCHEM a užijte si skvělou akci!
+                    5. června od 12:00 dorazte na SŠ EDUCHEM. Odejít můžete kdykoliv, jen to dejte vědět učiteli.
                   </p>
                 </div>
               </div>

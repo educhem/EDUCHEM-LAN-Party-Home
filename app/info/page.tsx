@@ -25,9 +25,9 @@ const organizers: Organizer[] = [
   { name: 'Michal Mudroch Bureš', role: 'Učitel', phone: '+420 777 116 567', instagram: '@deathwalker_cz', category: 'teacher' },
   { name: 'Sebastian Netolický', role: 'Učitel', instagram: '@internal_server_error.', category: 'teacher' },
   { name: 'David Chlad', role: 'Učitel', instagram: '@ampercz1', category: 'teacher' },
+  { name: 'Karel Honsig', role: 'Učitel', phone: '+420 724 478 552', instagram: '@karelhonsig', category: 'teacher' },
   { name: 'Stanislav Škudrna', role: 'Správce LAN Party systému', instagram: '@aldiix', category: 'admin' },
   { name: 'Serhii Yavorskyi', role: 'Správce LAN Party systému', instagram: '@_.yavorskiy.s._', category: 'admin' },
-  { name: 'Jakub Fryc', role: 'Grillmaster', instagram: '@f0xiar', category: 'grillmaster' },
 ]
 
 function OrganizerCard({ org }: { org: Organizer }) {
@@ -77,9 +77,9 @@ export default function InfoPage() {
     <div className={shell.page}>
       <div className={shell.pageHeader}>
         <span className={shell.eyebrow}>Informace</span>
-        <h1 className={shell.title}>Kompletní informace o akci</h1>
+        <h1 className={shell.title}>Summer LAN party - 2026</h1>
         <p className={shell.description}>
-          Všechny informace z info PDF přepsané do přehledné webové podoby. Organizátoři, kontakty a důležité údaje na jednom místě.
+          SŠ EDUCHEM, Eduarda Basse 1142, 434 01 Most. Akce probíhá od 5.6. 12:00 do 6.6. 14:00 a časy jsou orientační.
         </p>
       </div>
 
@@ -153,9 +153,8 @@ export default function InfoPage() {
                 ))}
               </div>
             ) : (
-              <p className={shell.empty}>Žádné výsledky.</p>
+              <p className={shell.empty}>Grillmasteři budou k dispozici u grilu během akce.</p>
             )}
-            <p className={styles.smallNote}>+ Misa :)</p>
           </section>
 
           <section id="kontakt" className={shell.section}>

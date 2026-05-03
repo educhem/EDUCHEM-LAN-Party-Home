@@ -33,7 +33,7 @@ export function Footer() {
         </div>
 
         <p className={styles.note}>
-          EDUCHEM LAN Party 2025 - SS EDUCHEM, Eduarda Basse 1142, 434 01 Most
+          Summer LAN Party 2026 - SŠ EDUCHEM, Eduarda Basse 1142, 434 01 Most
         </p>
       </div>
     </footer>

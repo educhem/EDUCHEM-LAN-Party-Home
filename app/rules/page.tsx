@@ -17,9 +17,10 @@ const categories: RuleCategory[] = [
     rules: [
       { title: 'Bezpečnostní opatření', content: 'Po celou dobu konání akce dodržujte bezpečnostní pokyny. Nepoužívejte elektroniku nebo jiná zařízení tak, aby to ohrozilo vás nebo ostatní.' },
       { title: 'Odcházení z budovy', content: 'Odcházení během akce z budovy školy je možné, ale učitel musí být informován.' },
-      { title: 'Školní PC', content: 'Není dovoleno měnit zapojení školních PC (odpojovat monitory) či jiné periferie včetně myší a klávesnic.' },
+      { title: 'Technická zařízení', content: 'Není dovoleno měnit zapojení školních PC (odpojovat monitory) či jiné periferie včetně myší a klávesnice.' },
       { title: 'Cizí vybavení', content: 'Prosíme, nezasahujte do cizího vybavení bez svolení majitele.' },
-      { title: 'Vlastní setup', content: 'Účastníci akce si mohou s sebou vzít vlastní setup. Jsou povinni vzít si s sebou vlastní monitor a všechny věci potřebné pro chod počítače + prodlužovák.' },
+      { title: 'Vlastní setup', content: 'Účastníci si mohou vzít vlastní setup. Jsou povinni vzít si vlastní monitor, prodlužovák a veškeré věci potřebné pro chod počítače.' },
+      { title: 'Aktualizovaný software', content: 'Veškerý software nainstalovaný na vašem setupu musí být aktualizovaný, včetně samotného operačního systému.' },
     ],
   },
   {
@@ -27,7 +28,7 @@ const categories: RuleCategory[] = [
     title: 'Ochrana majetku a prostředí',
     rules: [
       { title: 'Respekt k majetku', content: 'Nepoužívejte věci ostatních účastníků bez jejich souhlasu. Každý účastník nese odpovědnost za své osobní věci.' },
-      { title: 'Čistota a pořádek', content: 'Udržujte prostor, kde se akce koná, v čistotě. Po sobě uklízejte a odstraňujte nepořádek. Předtím, než budete odcházet, si po sobě ukliďte.' },
+      { title: 'Čistota a pořádek', content: 'Udržujte prostor, kde se akce koná, v čistotě. Po sobě uklízejte a odstraňujte nepořádek. Předtím, než budete z akce odcházet, si po sobě ukliďte.' },
     ],
   },
   {
@@ -43,22 +44,26 @@ const categories: RuleCategory[] = [
     title: 'Jídlo a nápoje',
     rules: [
       { title: 'Pravidla stravování', content: 'Dodržujte pravidla ohledně jídla a pití stanovená školou/pořadatelem. Jezte a pijte tak, abyste neohrozili majetek účastníků a školy.' },
-      { title: 'Čas jídla', content: 'Na jídlo není stanoven přesný čas, jíst se bude v daný čas, kdy to vyjde (jídlo: věci na grilování a pití v ceně).' },
+      { title: 'Čas jídla', content: 'Na jídlo není stanoven přesný čas, jíst se bude v daný čas, kdy to vyjde. Jídlo na grilování a pití je v ceně.' },
+      { title: 'Výdej jídla', content: 'Jídlo vám vždy vydá grillmaster.' },
+      { title: 'Kontrola masa', content: 'Zkontrolujte si, především ve večerních hodinách, že maso není syrové. Pokud bude syrové, vraťte ho grillmasterovi na dodělání.' },
+      { title: 'Chování u grilu', content: 'Dodržujte zásady slušného chování u grilu.' },
     ],
   },
   {
     id: 'hry',
-    title: 'Stahování her',
+    title: 'Jakým způsobem stahovat hry',
     rules: [
       { title: 'Opatření pro stahování', content: 'Kvůli přetížení sítě jsme museli udělat opatření pro stahování her. Pro snížení přetížení sítě si zkontrolujte a případně zapněte příslušné nastavení na Steamu na školním počítači.' },
-      { title: 'Doporučení - vlastní disk', content: 'Doporučujeme mít vlastní externí HDD/SSD, na kterém máte nainstalované hry, které si můžete přinést a poté je spustit přímo z něj.' },
+      { title: 'Doporučení - vlastní disk', content: 'Doporučujeme mít vlastní externí HDD/SSD, na kterém máte nainstalované hry. Disk si můžete přinést a hry spustit přímo z něj.' },
     ],
   },
   {
     id: 'zaverecne',
     title: 'Závěrečné pokyny',
     rules: [
-      { title: 'Pravomoc organizátorů', content: 'Organizátoři mají právo řešit jakékoli problémy nebo nesrovnalosti, aby zajistili plynulý průběh akce a pohodu všech účastníků.' },
+      { title: 'Pravomoc organizátorů', content: 'Organizátoři mají právo řešit jakékoliv problémy nebo nesrovnalosti, aby zajistili plynulý průběh akce a pohodu všech účastníků.' },
+      { title: 'Poděkování', content: 'Děkujeme vám za vaši účast!' },
     ],
   },
 ]
@@ -87,7 +92,7 @@ export default function RulesPage() {
         <span className={shell.eyebrow}>Pravidla</span>
         <h1 className={shell.title}>Pravidla akce</h1>
         <p className={shell.description}>
-          Pravidla platná pro všechny účastníky Mikulášské LAN Party 2025. Přečtěte si je prosím pozorně.
+          Pravidla platná pro všechny účastníky Summer LAN Party 2026. Přečtěte si je prosím pozorně.
         </p>
       </div>
 
@@ -122,7 +127,7 @@ export default function RulesPage() {
             <div>
               <p className={shell.alertTitle}>Důležité</p>
               <p className={shell.alertDescription}>
-                Dodržování pravidel je povinné pro všechny účastníky. Organizátoři mají právo řešit jakékoli problémy pro zajištění plynulého průběhu akce.
+                Dodržování pravidel je povinné pro všechny účastníky. Organizátoři mají právo řešit problémy a nesrovnalosti pro zajištění plynulého průběhu akce.
               </p>
             </div>
           </div>
