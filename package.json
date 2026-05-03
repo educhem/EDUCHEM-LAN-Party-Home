@@ -1,24 +1,24 @@
 {
-  "name": "educhem-lan-party",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "eslint ."
-  },
-  "dependencies": {
-    "next": "16.2.4",
-    "react": "19.2.5",
-    "react-dom": "19.2.5",
-    "zod": "^4.4.2"
-  },
-  "devDependencies": {
-    "@types/node": "^25",
-    "@types/react": "19.2.14",
-    "@types/react-dom": "19.2.3",
-    "sass": "^1.99.0",
-    "typescript": "6.0.3"
-  }
+    "name": "educhem-lan-party",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start",
+        "lint": "eslint ."
+    },
+    "dependencies": {
+        "next": "16.2.4",
+        "react": "19.2.5",
+        "react-dom": "19.2.5",
+        "zod": "^4.4.2"
+    },
+    "devDependencies": {
+        "@types/node": "^25",
+        "@types/react": "19.2.14",
+        "@types/react-dom": "19.2.3",
+        "sass": "^1.99.0",
+        "typescript": "6.0.3"
+    }
 }
