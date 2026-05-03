@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Gabarito:wght@400;500;600;700&display=swap');
+
+// ======================
+// VARIABLES
+// ======================
+
+$accent-dark: #ffb303;
+$accent-light: #ff8300;
+$header-height: 70px;
+$container-width: 1200px;
+$radius: 12px;
+$radius-sm: 8px;
+
+// ======================
+// CSS CUSTOM PROPERTIES
+// ======================
+
+:root {
+  --accent-color: #{$accent-dark};
+  --accent-color-text: black;
+  --accent-color-darker: #d39706;
+  --element-bg: #171717;
+  --element-bg-colored: #252115;
+  --bg: black;
+  --background-bg: #101010;
+  --background-bg-2: #1c1c1c;
+  --text-color: #f3f3f3;
+  --text-color-darker: #afafaf;
+  --text-color-secondary: #e0e0e0;
+  --text-color-3: #2a2a2a;
+  --error-color: #de2828;
+  --error-background: #2c1717;
+  
+  --header-height: #{$header-height};
+  --container-width: #{$container-width};
+  --radius: #{$radius};
+  --radius-sm: #{$radius-sm};
+}
+
+html.light {
+  --accent-color: #{$accent-light};
+  --accent-color-text: white;
+  --accent-color-darker: #d96f01;
+  --element-bg: white;
+  --element-bg-colored: #ffe8cc;
+  --bg: white;
+  --background-bg: #f8f6f1;
+  --background-bg-2: #fffdf7;
+  --text-color: #0c0c0c;
+  --text-color-darker: #afafaf;
+  --text-color-secondary: #606060;
+  --text-color-3: #e3e3e3;
+  --error-color: #ff0000;
+  --error-background: #ffb7b7;
+}
+
+// ======================
+// RESET
+// ======================
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Gabarito', system-ui, sans-serif;
+  background-color: var(--background-bg);
+  color: var(--text-color);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+// ======================
+// UTILITIES
+// ======================
+
+.container {
+  width: 100%;
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+// ======================
+// PLACEHOLDERS
+// ======================
+
+.iconPlaceholder {
+  width: 24px;
+  height: 24px;
+  background-color: var(--text-color-darker);
+  border-radius: 4px;
+  opacity: 0.5;
+  flex-shrink: 0;
+  
+  &.sm { width: 16px; height: 16px; }
+  &.lg { width: 32px; height: 32px; }
+  &.xl { width: 48px; height: 48px; }
+}
+
+.imagePlaceholder {
+  background: linear-gradient(135deg, var(--background-bg-2) 0%, var(--element-bg) 100%);
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-color-darker);
+  font-size: 0.875rem;
+}

@@ -1,21 +1,16 @@
 import type { Metadata, Viewport } from 'next'
-import { Gabarito, JetBrains_Mono } from 'next/font/google'
-import { Analytics } from '@vercel/analytics/next'
-import { ThemeProvider } from '@/components/theme-provider'
 import { Navbar } from '@/components/navbar'
 import { Footer } from '@/components/footer'
 import { BackToTop } from '@/components/back-to-top'
-import './globals.css'
-
-const gabarito = Gabarito({ subsets: ["latin", "latin-ext"], variable: "--font-gabarito" })
-const jetbrainsMono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-jetbrains" })
+import { ThemeProvider } from '@/components/theme-provider'
+import './globals.scss'
 
 export const metadata: Metadata = {
   title: {
     default: 'EDUCHEM LAN Party 2025',
     template: '%s | EDUCHEM LAN Party 2025',
   },
-  description: 'Mikulášská LAN Party 2025 na SŠ EDUCHEM v Mostě. 5.--6. prosince, vstup 100 Kč. Přijď si zahrát!',
+  description: 'Mikulasska LAN Party 2025 na SS EDUCHEM v Moste. 5.-6. prosince, vstup 100 Kc. Prijd si zahrat!',
 }
 
 export const viewport: Viewport = {
@@ -33,15 +28,14 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="cs" className={`${gabarito.variable} ${jetbrainsMono.variable}`} suppressHydrationWarning>
-      <body className="font-sans antialiased min-h-screen flex flex-col">
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
+    <html lang="cs" suppressHydrationWarning>
+      <body>
+        <ThemeProvider>
           <Navbar />
-          <main className="flex-1">{children}</main>
+          <main>{children}</main>
           <Footer />
           <BackToTop />
         </ThemeProvider>
-        <Analytics />
       </body>
     </html>
   )

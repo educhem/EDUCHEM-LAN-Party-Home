@@ -1,151 +1,71 @@
-"use client"
+'use client'
 
-import { useState } from "react"
-import { Badge } from "@/components/ui/badge"
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion"
-import { SearchFilter } from "@/components/search-filter"
-import { TableOfContents } from "@/components/table-of-contents"
-import { ShieldCheck, Monitor, Users, Utensils, Volume2, AlertTriangle, HardDrive } from "lucide-react"
-
-const tocItems = [
-  { id: "bezpecnost", label: "Bezpečnost a technika" },
-  { id: "majetek", label: "Ochrana majetku" },
-  { id: "chovani", label: "Komunikace a chování" },
-  { id: "jidlo", label: "Jídlo a nápoje" },
-  { id: "hry", label: "Stahování her" },
-  { id: "zaverecne", label: "Závěrečné pokyny" },
-]
+import { useState } from 'react'
+import { Accordion, AccordionItem } from '@/components/accordion'
 
 interface RuleCategory {
   id: string
-  icon: React.ElementType
   title: string
   rules: { title: string; content: string }[]
 }
 
 const categories: RuleCategory[] = [
   {
-    id: "bezpecnost",
-    icon: ShieldCheck,
-    title: "Bezpečnost a technika",
+    id: 'bezpecnost',
+    title: 'Bezpecnost a technika',
     rules: [
-      {
-        title: "Bezpečnostní opatření",
-        content:
-          "Po celou dobu konání akce dodržujte bezpečnostní pokyny. Nepoužívejte elektroniku nebo jiné zařízení tak, aby to ohrozilo vás nebo ostatní.",
-      },
-      {
-        title: "Odcházení z budovy",
-        content:
-          "Odcházení během akce z budovy školy je možné, ale učitel musí být informován.",
-      },
-      {
-        title: "Školní PC",
-        content:
-          "Není dovoleno měnit zapojení školních PC (odpojovat monitory) či jiné periferie včetně myší a klávesnice.",
-      },
-      {
-        title: "Cizí vybavení",
-        content:
-          "Prosíme, nezasahujte do cizího vybavení bez svolení majitele.",
-      },
-      {
-        title: "Vlastní setup",
-        content:
-          "Účastníci akce mohou si s sebou vzít vlastní setup. Jsou si povinni s sebou vzít vlastní monitor a veškeré věci, které jsou potřeba pro chod počítače + prodlužovák.",
-      },
+      { title: 'Bezpecnostni opatreni', content: 'Po celou dobu konani akce dodrzujte bezpecnostni pokyny. Nepouzivejte elektroniku nebo jine zarizeni tak, aby to ohrozilo vas nebo ostatni.' },
+      { title: 'Odchazeni z budovy', content: 'Odchazeni behem akce z budovy skoly je mozne, ale ucitel musi byt informovan.' },
+      { title: 'Skolni PC', content: 'Neni dovoleno menit zapojeni skolnich PC (odpojovat monitory) ci jine periferie vcetne mysi a klavesnice.' },
+      { title: 'Cizi vybaveni', content: 'Prosime, nezasahujte do ciziho vybaveni bez svoleni majitele.' },
+      { title: 'Vlastni setup', content: 'Ucastnici akce mohou si s sebou vzit vlastni setup. Jsou si povinni vzit s sebou vlastni monitor a vsechny veci potrebne pro chod pocitace + prodluzovak.' },
     ],
   },
   {
-    id: "majetek",
-    icon: Monitor,
-    title: "Opatření k ochraně majetku a prostředí",
+    id: 'majetek',
+    title: 'Ochrana majetku a prostredi',
     rules: [
-      {
-        title: "Respekt k majetku",
-        content:
-          "Nepoužívejte věci ostatních účastníků bez jejich souhlasu. Každý účastník nese odpovědnost za své osobní věci.",
-      },
-      {
-        title: "Čistota a pořádek",
-        content:
-          "Udržujte prostor, kde se akce koná, v čistotě. Po sobě uklízejte a odstraňujte nepořádek. Předtím, než budete z akce odcházet, si po sobě ukliďte.",
-      },
+      { title: 'Respekt k majetku', content: 'Nepouzivejte veci ostatnich ucastniku bez jejich souhlasu. Kazdy ucastnik nese odpovednost za sve osobni veci.' },
+      { title: 'Cistota a poradek', content: 'Udrzujte prostor, kde se akce kona, v cistote. Po sobe uklizejte a odstranujte neporadek. Predtim, nez budete odchazet, si po sobe uklidte.' },
     ],
   },
   {
-    id: "chovani",
-    icon: Users,
-    title: "Komunikace a chování",
+    id: 'chovani',
+    title: 'Komunikace a chovani',
     rules: [
-      {
-        title: "Respektujte ostatní účastníky",
-        content:
-          "Buďte ohleduplní a respektujte hranice a pohodlí ostatních. Neprovádějte žádné nevhodné nebo rušivé chování.",
-      },
-      {
-        title: "Hlučnost a klidová doba",
-        content:
-          "V noci snižte hlasitost, abyste minimalizovali rušení okolního prostředí během nočního klidu.",
-      },
+      { title: 'Respektujte ostatni ucastniky', content: 'Budte ohleduplni a respektujte hranice a pohodli ostatnich. Neprovadejte zadne nevhodne nebo rusive chovani.' },
+      { title: 'Hlucnost a klidova doba', content: 'V noci snizte hlasitost, abyste minimalizovali ruseni okolniho prostredi behem nocniho klidu.' },
     ],
   },
   {
-    id: "jidlo",
-    icon: Utensils,
-    title: "Jídlo a nápoje",
+    id: 'jidlo',
+    title: 'Jidlo a napoje',
     rules: [
-      {
-        title: "Pravidla stravování",
-        content:
-          "Dodržujte pravidla ohledně jídla a pití stanovená školou/pořadatelem. Jezte a pijte tak, abyste neohrozili majetek účastníků a školy.",
-      },
-      {
-        title: "Čas jídla",
-        content:
-          "Na jídlo není stanoven přesný čas, jíst se bude daný čas, kdy to vyjde (jídlo: věci na grilování a pití v ceně).",
-      },
+      { title: 'Pravidla stravovani', content: 'Dodrzujte pravidla ohledne jidla a piti stanovena skolou/poradatelem. Jezte a pijte tak, abyste neohrozili majetek ucastniku a skoly.' },
+      { title: 'Cas jidla', content: 'Na jidlo neni stanoven presny cas, jist se bude dany cas, kdy to vyjde (jidlo: veci na grilovani a piti v cene).' },
     ],
   },
   {
-    id: "hry",
-    icon: HardDrive,
-    title: "Jakým způsobem stahovat hry",
+    id: 'hry',
+    title: 'Stahovani her',
     rules: [
-      {
-        title: "Opatření pro stahování",
-        content:
-          "Kvůli přetížení sítě jsme museli udělat opatření pro stahování her. Pro snížení přetížení sítě si zkontrolujte a popřípadě zapněte příslušné nastavení na Steamu na školním počítači.",
-      },
-      {
-        title: "Doporučení – vlastní disk",
-        content:
-          "Doporučujeme mít vlastní externí HDD/SSD, na kterém máte nainstalované hry, které si můžete přinést a poté vaše hry spustit nainstalované na něm.",
-      },
+      { title: 'Opatreni pro stahovani', content: 'Kvuli pretizeni site jsme museli udelat opatreni pro stahovani her. Pro snizeni pretizeni site si zkontrolujte a pripadne zapnete prislusne nastaveni na Steamu na skolnim pocitaci.' },
+      { title: 'Doporuceni - vlastni disk', content: 'Doporucujeme mit vlastni externi HDD/SSD, na kterem mate nainstalovane hry, ktere si muzete prinest a pote vase hry spustit nainstalovane na nem.' },
     ],
   },
   {
-    id: "zaverecne",
-    icon: AlertTriangle,
-    title: "Závěrečné pokyny",
+    id: 'zaverecne',
+    title: 'Zaverecne pokyny',
     rules: [
-      {
-        title: "Pravomoc organizátorů",
-        content:
-          "Organizátoři mají právo řešit jakékoliv problémy nebo nesrovnalosti, aby zajistili plynulý průběh akce a pohodu všech účastníků.",
-      },
+      { title: 'Pravomoc organizatoru', content: 'Organizatori maji pravo resit jakekoli problemy nebo nesrovnalosti, aby zajistili plynuly prubeh akce a pohodu vsech ucastniku.' },
     ],
   },
 ]
 
+const tocItems = categories.map((cat) => ({ id: cat.id, label: cat.title }))
+
 export default function RulesPage() {
-  const [search, setSearch] = useState("")
+  const [search, setSearch] = useState('')
   const query = search.toLowerCase()
 
   const filteredCategories = categories
@@ -161,69 +81,69 @@ export default function RulesPage() {
     .filter((cat) => cat.rules.length > 0)
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-12 lg:px-6">
-      <div className="mb-10">
-        <Badge variant="outline" className="border-primary/30 text-primary bg-primary/5 mb-4">
-          {"Pravidla"}
-        </Badge>
-        <h1 className="text-3xl font-bold text-foreground mb-2">{"Pravidla akce"}</h1>
-        <p className="text-muted-foreground max-w-2xl leading-relaxed">
-          {"Pravidla platná pro všechny účastníky Mikulášské LAN Party 2025. Přečtěte si je prosím pozorně."}
+    <div className="container" style={{ paddingTop: 'calc(var(--header-height) + 60px)', paddingBottom: '80px' }}>
+      <div className="page-header" style={{ paddingTop: 0, textAlign: 'left' }}>
+        <span className="badge">Pravidla</span>
+        <h1 className="page-title" style={{ marginTop: '16px' }}>Pravidla akce</h1>
+        <p className="page-description" style={{ marginLeft: 0, textAlign: 'left' }}>
+          Pravidla platna pro vsechny ucastniky Mikulasske LAN Party 2025. Prectete si je prosim pozorne.
         </p>
       </div>
 
-      <div className="flex flex-col gap-8 lg:flex-row">
-        {/* Sidebar TOC */}
-        <aside className="lg:w-64 shrink-0">
-          <div className="sticky top-20">
-            <TableOfContents items={tocItems} />
-          </div>
+      <div className="two-col">
+        <aside className="sticky-sidebar">
+          <nav className="toc">
+            <h2 className="toc-title">Kategorie</h2>
+            <ul className="toc-list">
+              {tocItems.map((item) => (
+                <li key={item.id}>
+                  <a href={`#${item.id}`} className="toc-link">{item.label}</a>
+                </li>
+              ))}
+            </ul>
+          </nav>
         </aside>
 
-        {/* Content */}
-        <div className="flex-1 flex flex-col gap-8">
-          <SearchFilter value={search} onChange={setSearch} placeholder="Hledat v pravidlech..." />
+        <div>
+          <div className="search-wrapper" style={{ marginBottom: '40px' }}>
+            <div className="icon-placeholder sm search-icon" aria-hidden="true" />
+            <input
+              type="text"
+              className="input search-input"
+              placeholder="Hledat v pravidlech..."
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+            />
+          </div>
 
-          {/* Important callout */}
-          <Alert className="border-primary/30 bg-primary/5">
-            <ShieldCheck className="size-4 text-primary" />
-            <AlertTitle className="text-foreground">{"Důležité"}</AlertTitle>
-            <AlertDescription className="text-muted-foreground">
-              {"Dodržování pravidel je povinné pro všechny účastníky. Organizátoři mají právo řešit jakékoliv problémy pro zajištění plynulého průběhu akce."}
-            </AlertDescription>
-          </Alert>
+          <div className="alert alert-warning" style={{ marginBottom: '32px' }}>
+            <div className="icon-placeholder" aria-hidden="true" />
+            <div>
+              <p className="alert-title">Dulezite</p>
+              <p className="alert-description">
+                Dodrzovani pravidel je povinne pro vsechny ucastniky. Organizatori maji pravo resit jakekoli problemy pro zajisteni plynuleho prubehu akce.
+              </p>
+            </div>
+          </div>
 
           {filteredCategories.length === 0 ? (
-            <p className="text-muted-foreground text-sm">{"Žádné výsledky pro zadaný hledaný výraz."}</p>
+            <p style={{ color: 'var(--text-color-darker)' }}>Zadne vysledky pro zadany hledany vyraz.</p>
           ) : (
-            filteredCategories.map((cat) => {
-              const Icon = cat.icon
-              return (
-                <section key={cat.id} id={cat.id}>
-                  <h2 className="text-xl font-bold text-foreground mb-4 flex items-center gap-2">
-                    <Icon className="size-5 text-primary" />
-                    {cat.title}
-                  </h2>
-                  <Accordion
-                    type="single"
-                    collapsible
-                    defaultValue={`${cat.id}-0`}
-                    className="rounded-lg border border-border/50 bg-card px-4"
-                  >
-                    {cat.rules.map((rule, idx) => (
-                      <AccordionItem key={idx} value={`${cat.id}-${idx}`}>
-                        <AccordionTrigger className="text-foreground">
-                          {rule.title}
-                        </AccordionTrigger>
-                        <AccordionContent className="text-muted-foreground leading-relaxed">
-                          {rule.content}
-                        </AccordionContent>
-                      </AccordionItem>
-                    ))}
-                  </Accordion>
-                </section>
-              )
-            })
+            filteredCategories.map((cat) => (
+              <section key={cat.id} id={cat.id} style={{ marginBottom: '32px' }}>
+                <h2 className="section-title" style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
+                  <div className="icon-placeholder" aria-hidden="true" />
+                  {cat.title}
+                </h2>
+                <Accordion>
+                  {cat.rules.map((rule, idx) => (
+                    <AccordionItem key={idx} title={rule.title} defaultOpen={idx === 0}>
+                      <p>{rule.content}</p>
+                    </AccordionItem>
+                  ))}
+                </Accordion>
+              </section>
+            ))
           )}
         </div>
       </div>
