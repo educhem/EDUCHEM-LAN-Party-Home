@@ -24,7 +24,9 @@ export function Navbar() {
     <>
       <header className={styles.header}>
         <Link href="/" className={styles.logo}>
-          <span className={styles.logoMark} aria-hidden="true">LP</span>
+          <span className={styles.logoMark} aria-hidden="true">
+            <img src="/images/logo/logo.svg" alt="" className={styles.logoImage} />
+          </span>
           <span>LAN Party</span>
         </Link>
 
@@ -41,6 +43,9 @@ export function Navbar() {
         </nav>
 
         <div className={styles.actions}>
+          <a href="/app/" className={styles.systemLink}>
+            Vstup do systému
+          </a>
           <button
             onClick={toggleTheme}
             className={styles.iconButton}
@@ -60,6 +65,9 @@ export function Navbar() {
       </header>
 
       <div className={`${styles.mobileMenu}${open ? ` ${styles.mobileMenuOpen}` : ''}`}>
+        <a href="/app/" className={styles.mobileSystemLink}>
+          Vstup do systému
+        </a>
         {links.map((link) => (
           <Link
             key={link.href}

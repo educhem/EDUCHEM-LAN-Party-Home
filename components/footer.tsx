@@ -15,7 +15,9 @@ export function Footer() {
       <div className={styles.inner}>
         <div className={styles.content}>
           <Link href="/" className={styles.logo}>
-            <span className={styles.logoMark} aria-hidden="true">LP</span>
+            <span className={styles.logoMark} aria-hidden="true">
+              <img src="/images/logo/logo.svg" alt="" className={styles.logoImage} />
+            </span>
             <span>EDUCHEM LAN Party</span>
           </Link>
 
@@ -27,9 +29,14 @@ export function Footer() {
             ))}
           </nav>
 
-          <a href="/info.pdf" download className={styles.download}>
-            Stáhnout info.pdf
-          </a>
+          <div className={styles.actions}>
+            <a href="/app/" className={styles.systemLink}>
+              Vstup do systému
+            </a>
+            <a href="/info.pdf" download className={styles.download}>
+              Stáhnout info.pdf
+            </a>
+          </div>
         </div>
 
         <p className={styles.note}>

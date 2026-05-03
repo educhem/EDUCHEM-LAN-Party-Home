@@ -20,8 +20,11 @@ export default function HomePage() {
             SŠ EDUCHEM, Eduarda Basse 1142, 434 01 Most. Přijď si zahrát, rezervovat si místo v LAN Party systému a užít letní akci s kamarády.
           </p>
           <div className={styles.heroButtons}>
-            <Link href="/reservation" className={`${shell.button} ${shell.primaryButton}`}>
+            <a href="/app/" className={`${shell.button} ${shell.primaryButton}`}>
               <span className={shell.buttonDot} aria-hidden="true" />
+              Vstup do systému
+            </a>
+            <Link href="/reservation" className={`${shell.button} ${shell.primaryButton}`}>
               Rezervovat místo
             </Link>
             <Link href="/info" className={`${shell.button} ${shell.secondaryButton}`}>
@@ -58,6 +61,19 @@ export default function HomePage() {
               <strong>Jedna noc, jedna síť, hodně her.</strong>
               <span>Školní PC, vlastní setupy, společný prostor a grilování v ceně vstupného.</span>
             </div>
+          </div>
+
+          <div className={styles.systemPanel}>
+            <div>
+              <p className={styles.systemKicker}>LAN Party systém</p>
+              <h2 className={styles.systemTitle}>Rezervace míst probíhá v systému</h2>
+              <p className={styles.systemText}>
+                Po zaplacení vstupného vám přijdou přístupové údaje do emailu. V systému si potom rezervujete školní počítač nebo místo pro vlastní setup.
+              </p>
+            </div>
+            <a href="/app/" className={`${shell.button} ${shell.primaryButton}`}>
+              Vstup do systému
+            </a>
           </div>
         </div>
       </section>
