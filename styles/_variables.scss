@@ -1,0 +1,75 @@
+// Color variables - used via CSS custom properties for theme switching
+// Dark theme colors (default)
+$accent-color-dark: #ffb303;
+$accent-color-darker-dark: #d39706;
+$element-bg-dark: #171717;
+$element-bg-colored-dark: #252115;
+$bg-dark: black;
+$background-bg-dark: #101010;
+$background-bg-2-dark: #1c1c1c;
+$text-color-dark: #f3f3f3;
+$text-color-darker-dark: #afafaf;
+$text-color-secondary-dark: #e0e0e0;
+$text-color-3-dark: #2a2a2a;
+
+// Light theme colors
+$accent-color-light: #ff8300;
+$accent-color-darker-light: #d96f01;
+$element-bg-light: white;
+$element-bg-colored-light: #ffe8cc;
+$bg-light: white;
+$background-bg-light: #f8f6f1;
+$background-bg-2-light: #fffdf7;
+$text-color-light: #0c0c0c;
+$text-color-darker-light: #afafaf;
+$text-color-secondary-light: #606060;
+$text-color-3-light: #e3e3e3;
+
+// Error colors
+$error-color: #de2828;
+$error-background-dark: #2c1717;
+$error-background-light: #ffb7b7;
+
+// Layout
+$header-height: 70px;
+$container-width: 1200px;
+$radius: 12px;
+$radius-sm: 8px;
+
+// Breakpoints
+$breakpoint-mobile: 500px;
+$breakpoint-tablet: 768px;
+$breakpoint-desktop: 900px;
+
+// Mixins
+@mixin respond-to($breakpoint) {
+    @if $breakpoint == mobile {
+        @media (max-width: $breakpoint-mobile) {
+            @content;
+        }
+    } @else if $breakpoint == tablet {
+        @media (max-width: $breakpoint-tablet) {
+            @content;
+        }
+    } @else if $breakpoint == desktop {
+        @media (max-width: $breakpoint-desktop) {
+            @content;
+        }
+    }
+}
+
+@mixin flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin glass-effect {
+    background: rgba(23, 23, 23, 0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+
+    :global(html.light) & {
+        background: rgba(255, 255, 255, 0.7);
+    }
+}

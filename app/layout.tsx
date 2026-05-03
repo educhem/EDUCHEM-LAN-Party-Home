@@ -1,48 +1,42 @@
-import type { Metadata, Viewport } from 'next'
-import { Gabarito, JetBrains_Mono } from 'next/font/google'
-import { Analytics } from '@vercel/analytics/next'
-import { ThemeProvider } from '@/components/theme-provider'
-import { Navbar } from '@/components/navbar'
-import { Footer } from '@/components/footer'
-import { BackToTop } from '@/components/back-to-top'
-import './globals.css'
-
-const gabarito = Gabarito({ subsets: ["latin", "latin-ext"], variable: "--font-gabarito" })
-const jetbrainsMono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-jetbrains" })
+import type {Metadata, Viewport} from 'next'
+import {Navbar} from '@/components/navbar'
+import {Footer} from '@/components/footer'
+import {BackToTop} from '@/components/back-to-top'
+import {ThemeProvider} from '@/components/theme-provider'
+import './globals.scss'
 
 export const metadata: Metadata = {
-  title: {
-    default: 'EDUCHEM LAN Party 2025',
-    template: '%s | EDUCHEM LAN Party 2025',
-  },
-  description: 'Mikulášská LAN Party 2025 na SŠ EDUCHEM v Mostě. 5.--6. prosince, vstup 100 Kč. Přijď si zahrát!',
+    title: {
+        default: 'Summer LAN Party 2026',
+        template: '%s | Summer LAN Party 2026',
+    },
+    description: 'Summer LAN Party 2026 na SŠ EDUCHEM v Mostě. 5.-6. června, vstup 100 Kč.',
 }
 
 export const viewport: Viewport = {
-  themeColor: [
-    { media: '(prefers-color-scheme: dark)', color: '#101010' },
-    { media: '(prefers-color-scheme: light)', color: '#f8f6f1' },
-  ],
-  width: 'device-width',
-  initialScale: 1,
+    themeColor: [
+        {media: '(prefers-color-scheme: dark)', color: '#101010'},
+        {media: '(prefers-color-scheme: light)', color: '#f8f6f1'},
+    ],
+    width: 'device-width',
+    initialScale: 1,
 }
 
 export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode
+                                       children,
+                                   }: Readonly<{
+    children: React.ReactNode
 }>) {
-  return (
-    <html lang="cs" className={`${gabarito.variable} ${jetbrainsMono.variable}`} suppressHydrationWarning>
-      <body className="font-sans antialiased min-h-screen flex flex-col">
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
-          <Navbar />
-          <main className="flex-1">{children}</main>
-          <Footer />
-          <BackToTop />
+    return (
+        <html lang="cs" suppressHydrationWarning>
+        <body>
+        <ThemeProvider>
+            <Navbar/>
+            <main>{children}</main>
+            <Footer/>
+            <BackToTop/>
         </ThemeProvider>
-        <Analytics />
-      </body>
-    </html>
-  )
+        </body>
+        </html>
+    )
 }

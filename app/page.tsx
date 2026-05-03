@@ -1,19 +1,138 @@
-import { Metadata } from "next"
-import { HeroSection } from "@/components/home/hero-section"
-import { InfoBlocks } from "@/components/home/info-blocks"
-import { HowItWorks } from "@/components/home/how-it-works"
-
-export const metadata: Metadata = {
-  title: "EDUCHEM LAN Party 2025",
-  description: "Mikulášská LAN Party 2025 na SŠ EDUCHEM v Mostě. 5.–6. prosince, vstup 100 Kč.",
-}
+import Link from 'next/link'
+import shell from './page-shell.module.scss'
+import styles from './page.module.scss'
 
 export default function HomePage() {
-  return (
-    <>
-      <HeroSection />
-      <InfoBlocks />
-      <HowItWorks />
-    </>
-  )
+    return (
+        <>
+            <section className={styles.hero}>
+                <div className={`${styles.heroImage} ${styles.heroImageDark}`}>
+                    <img src="/images/banner3.jpeg" alt=""/>
+                </div>
+                <div className={`${styles.heroImage} ${styles.heroImageLight}`}>
+                    <img src="/images/banner2.jpeg" alt=""/>
+                </div>
+                <div className={styles.heroOverlay}/>
+                <div className={styles.heroContent}>
+                    <span className={shell.eyebrow}>5.-6. června 2026</span>
+                    <h1 className={styles.heroTitle}>
+                        Summer
+                        <span className={styles.heroAccent}>LAN Party</span>
+                    </h1>
+                    <p className={styles.heroDescription}>
+                        SŠ EDUCHEM, Eduarda Basse 1142, 434 01 Most. Přijď si zahrát, rezervovat si místo v LAN Party
+                        systému a užít letní akci s kamarády.
+                    </p>
+                    <div className={styles.heroButtons}>
+                        {/*<a href="/app/" className={`${shell.button} ${shell.primaryButton}`}>*/}
+                        {/*    Vstup do systému*/}
+                        {/*</a>*/}
+                        <Link href="/reservation" className={`${shell.button} ${shell.primaryButton}`}>
+                            Rezervovat místo
+                        </Link>
+                        <Link href="/info" className={`${shell.button} ${shell.secondaryButton}`}>
+                            Zjistit více
+                        </Link>
+                    </div>
+                </div>
+            </section>
+
+            <section className={styles.section}>
+                <div className={styles.container}>
+                    <div className={styles.infoGrid}>
+                        <div className={`${shell.card} ${styles.infoCard}`}>
+                            <p className={styles.infoKicker}>Datum</p>
+                            <p className={styles.infoValue}>5.-6. 6. 2026</p>
+                        </div>
+                        <div className={`${shell.card} ${styles.infoCard}`}>
+                            <p className={styles.infoKicker}>Místo</p>
+                            <p className={styles.infoValue}>SŠ EDUCHEM</p>
+                        </div>
+                        <div className={`${shell.card} ${styles.infoCard}`}>
+                            <p className={styles.infoKicker}>Čas</p>
+                            <p className={styles.infoValue}>12:00 - 14:00</p>
+                        </div>
+                        <div className={`${shell.card} ${styles.infoCard}`}>
+                            <p className={styles.infoKicker}>Vstupné</p>
+                            <p className={styles.infoValue}>100 Kč</p>
+                        </div>
+                    </div>
+
+                    <div className={styles.feature}>
+                        <img src="/images/img1.jpg"/>
+                        <div className={styles.featureCaption}>
+                            <strong>Jedna noc, jedna síť, hodně her.</strong>
+                            <span>Školní PC, vlastní setupy, společný prostor a grilování v ceně vstupného.</span>
+                        </div>
+                    </div>
+
+                    <div className={styles.systemPanel}>
+                        <div>
+                            <p className={styles.systemKicker}>LAN Party systém</p>
+                            <h2 className={styles.systemTitle}>Rezervace míst probíhá v systému</h2>
+                            <p className={styles.systemText}>
+                                Po zaplacení vstupného vám přijdou přístupové údaje do emailu. V systému si potom
+                                rezervujete školní počítač nebo místo pro vlastní setup.
+                            </p>
+                        </div>
+                        <a href="/app/" className={`${shell.button} ${shell.primaryButton}`}>
+                            Vstup do systému
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <section className={`${styles.section} ${styles.sectionTint}`}>
+                <div className={styles.container}>
+                    <h2 className={styles.sectionTitle}>Jak to funguje</h2>
+                    <div className={styles.processGrid}>
+                        <div className={styles.steps}>
+                            <div className={styles.step}>
+                                <div className={styles.stepNumber}>1</div>
+                                <div>
+                                    <h3 className={styles.stepTitle}>Zaplatit vstupné</h3>
+                                    <p className={styles.stepText}>
+                                        Převodem 100 Kč na účet 2603033660/2010. Do zprávy napište JMÉNO PŘÍJMENÍ,
+                                        TŘÍDA, EMAIL.
+                                    </p>
+                                </div>
+                            </div>
+                            <div className={styles.step}>
+                                <div className={styles.stepNumber}>2</div>
+                                <div>
+                                    <h3 className={styles.stepTitle}>Obdržet přístup</h3>
+                                    <p className={styles.stepText}>
+                                        Jakmile zaplatíte, přijdou vám přístupové údaje do emailu uvedeného ve zprávě
+                                        platby.
+                                    </p>
+                                </div>
+                            </div>
+                            <div className={styles.step}>
+                                <div className={styles.stepNumber}>3</div>
+                                <div>
+                                    <h3 className={styles.stepTitle}>Rezervovat místo</h3>
+                                    <p className={styles.stepText}>
+                                        V systému si můžete rezervovat školní PC nebo místo pro vlastní setup.
+                                    </p>
+                                </div>
+                            </div>
+                            <div className={styles.step}>
+                                <div className={styles.stepNumber}>4</div>
+                                <div>
+                                    <h3 className={styles.stepTitle}>Přijít a užít si</h3>
+                                    <p className={styles.stepText}>
+                                        5. června od 12:00 dorazte na SŠ EDUCHEM. Odejít můžete kdykoliv, jen to dejte
+                                        vědět učiteli.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div className={styles.setupImage}>
+                            <img src="/images/img2.jpg" alt="Herní setup s počítačem"/>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </>
+    )
 }
