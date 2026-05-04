@@ -77,7 +77,7 @@ export const historyEvents: HistoryEvent[] = [
             {src: '/images/history/xmas2025/IMG_2002.JPEG', alt: '', tall: true},
             {src: '/images/history/xmas2025/IMG_20251205_143544.jpg', alt: '', tall: true},
             {src: '/images/history/xmas2025/IMG_20251206_074657_781.jpg', alt: '', tall: true},
-            {src: '/images/banner1.jpeg', alt: '', wide: true},
+            {src: '/images/banner1.jpg', alt: '', wide: true},
             {src: '/images/img1.jpg', alt: ''},
             {src: '/images/img2.jpg', alt: ''},
         ],
