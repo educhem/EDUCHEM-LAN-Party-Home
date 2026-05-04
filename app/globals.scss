@@ -64,6 +64,11 @@ html.light {
     padding: 0;
 }
 
+::selection{
+    background-color: var(--accent-color);
+    color: var(--accent-color-text);
+}
+
 // custom scrollbar
 ::-webkit-scrollbar {
     width: 8px;
