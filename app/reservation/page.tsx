@@ -1,18 +1,25 @@
-'use client'
-
 import {Accordion, AccordionItem} from '@/components/accordion'
+import {siteConfig} from '@/data/site'
 import shell from '../page-shell.module.scss'
 import styles from './reservation.module.scss'
+import type {Metadata} from "next";
+
+export const metadata: Metadata = {
+    title: 'Rezervace',
+    description: `Jak rezervovat místo na ${siteConfig.currentEvent.title}, jak zaplatit vstupné a další důležité informace.`,
+}
+
+const event = siteConfig.currentEvent;
 
 const steps = [
     {
-        title: 'Zaplaťte vstupné 100 Kč',
+        title: `Zaplaťte vstupné ${event.fee}`,
         details: [
-            'Číslo účtu: 2603033660/2010',
-            'Částka: 100,00 CZK',
-            'Zpráva pro příjemce: JMÉNO PŘÍJMENÍ, TŘÍDA, EMAIL',
+            `Číslo účtu: ${event.bankAccount}`,
+            `Částka: ${event.feeDecimal}`,
+            `Zpráva pro příjemce: ${event.paymentMessage}`,
             'Dodržujte prosím tento formát.',
-            'Termín: do 4.6. 20:00',
+            `Termín: do ${event.paymentDeadline}`,
             'Můžete zaplatit ručním zadáním, nebo pomocí QR kódu.',
         ],
     },
@@ -51,7 +58,7 @@ const faqItems = [
     },
     {
         question: 'Do kdy musím zaplatit?',
-        answer: 'Vstupné 100 Kč je nutné zaplatit do 4.6. 20:00.',
+        answer: `Vstupné ${event.fee} je nutné zaplatit do ${event.paymentDeadline}.`,
     },
 ]
 
@@ -106,7 +113,7 @@ export default function ReservationPage() {
                     <div>
                         <p className={shell.alertTitle}>Důležité upozornění</p>
                         <p className={shell.alertDescription}>
-                            Ve zprávě pro příjemce dodržujte formát: JMÉNO PŘÍJMENÍ, TŘÍDA, EMAIL. Bez správného formátu
+                            Ve zprávě pro příjemce dodržujte formát: {event.paymentMessage}. Bez správného formátu
                             nemusí být platba přiřazena.
                         </p>
                     </div>

@@ -1,8 +1,11 @@
 import Link from 'next/link'
+import {siteConfig} from '@/data/site'
 import shell from './page-shell.module.scss'
 import styles from './page.module.scss'
 
 export default function HomePage() {
+    const event = siteConfig.currentEvent
+
     return (
         <>
             <section className={styles.hero}>
@@ -14,13 +17,13 @@ export default function HomePage() {
                 </div>
                 <div className={styles.heroOverlay}/>
                 <div className={styles.heroContent}>
-                    <span className={shell.eyebrow}>5.-6. června 2026</span>
+                    <span className={shell.eyebrow}>{event.dateLong}</span>
                     <h1 className={styles.heroTitle}>
-                        Summer
-                        <span className={styles.heroAccent}>LAN Party</span>
+                        {event.heroTitle}
+                        <span className={styles.heroAccent}>{event.heroAccent}</span>
                     </h1>
                     <p className={styles.heroDescription}>
-                        SŠ EDUCHEM, Eduarda Basse 1142, 434 01 Most. Přijď si zahrát, rezervovat si místo v LAN Party
+                        {event.venueFull}. Přijď si zahrát, rezervovat si místo v LAN Party
                         systému a užít letní akci s kamarády.
                     </p>
                     <div className={styles.heroButtons}>
@@ -42,19 +45,19 @@ export default function HomePage() {
                     <div className={styles.infoGrid}>
                         <div className={`${shell.card} ${styles.infoCard}`}>
                             <p className={styles.infoKicker}>Datum</p>
-                            <p className={styles.infoValue}>5.-6. 6. 2026</p>
+                            <p className={styles.infoValue}>{event.dateShort}</p>
                         </div>
                         <div className={`${shell.card} ${styles.infoCard}`}>
                             <p className={styles.infoKicker}>Místo</p>
-                            <p className={styles.infoValue}>SŠ EDUCHEM</p>
+                            <p className={styles.infoValue}>{event.venueShort}</p>
                         </div>
                         <div className={`${shell.card} ${styles.infoCard}`}>
                             <p className={styles.infoKicker}>Čas</p>
-                            <p className={styles.infoValue}>12:00 - 14:00</p>
+                            <p className={styles.infoValue}>{event.startTime} - {event.endTime}</p>
                         </div>
                         <div className={`${shell.card} ${styles.infoCard}`}>
                             <p className={styles.infoKicker}>Vstupné</p>
-                            <p className={styles.infoValue}>100 Kč</p>
+                            <p className={styles.infoValue}>{event.fee}</p>
                         </div>
                     </div>
 
@@ -92,8 +95,8 @@ export default function HomePage() {
                                 <div>
                                     <h3 className={styles.stepTitle}>Zaplatit vstupné</h3>
                                     <p className={styles.stepText}>
-                                        Převodem 100 Kč na účet 2603033660/2010. Do zprávy napište JMÉNO PŘÍJMENÍ,
-                                        TŘÍDA, EMAIL.
+                                        Převodem {event.fee} na účet {event.bankAccount}. Do zprávy napište{' '}
+                                        {event.paymentMessage}.
                                     </p>
                                 </div>
                             </div>
@@ -121,7 +124,7 @@ export default function HomePage() {
                                 <div>
                                     <h3 className={styles.stepTitle}>Přijít a užít si</h3>
                                     <p className={styles.stepText}>
-                                        5. června od 12:00 dorazte na SŠ EDUCHEM. Odejít můžete kdykoliv, jen to dejte
+                                        {event.startDate} od {event.startTime} dorazte na {event.venueShort}. Odejít můžete kdykoliv, jen to dejte
                                         vědět učiteli.
                                     </p>
                                 </div>

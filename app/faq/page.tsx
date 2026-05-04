@@ -1,16 +1,23 @@
-'use client'
-
 import {Accordion, AccordionItem} from '@/components/accordion'
+import {siteConfig} from '@/data/site'
 import shell from '../page-shell.module.scss'
+import type {Metadata} from "next";
+
+const event = siteConfig.currentEvent
+
+export const metadata: Metadata = {
+    title: 'FAQ',
+    description: `Odpovědi na nejčastější otázky o ${event.title}. Všechny informace vycházejí z oficiálního info PDF.`,
+}
 
 const faqItems = [
     {
         question: 'Kolik stojí vstupné a jak zaplatit?',
-        answer: 'Vstupné je 100 Kč. Zaplaťte převodem na účet 2603033660/2010 se zprávou: JMÉNO PŘÍJMENÍ, TŘÍDA, EMAIL. Můžete také použít QR kód z info PDF. Termín platby: do 4.6. 20:00.'
+        answer: `Vstupné je ${event.fee}. Zaplaťte převodem na účet ${event.bankAccount} se zprávou: ${event.paymentMessage}. Můžete také použít QR kód z info PDF. Termín platby: do ${event.paymentDeadline}.`
     },
     {
         question: 'Kdy akce probíhá?',
-        answer: 'Summer LAN Party 2026 probíhá od 5.6. 12:00 do 6.6. 14:00. Časy jsou orientační.'
+        answer: `${event.title} probíhá od ${event.startDate} ${event.startTime} do ${event.endDate} ${event.endTime}. Časy jsou orientační.`
     },
     {
         question: 'Musím si rezervovat místo?',
@@ -57,7 +64,7 @@ export default function FAQPage() {
                 <span className={shell.eyebrow}>FAQ</span>
                 <h1 className={shell.title}>Často kladené otázky</h1>
                 <p className={shell.description}>
-                    Odpovědi na nejčastější otázky o Summer LAN Party 2026. Všechny informace vycházejí z oficiálního
+                    Odpovědi na nejčastější otázky o {event.title}. Všechny informace vycházejí z oficiálního
                     info PDF.
                 </p>
             </div>

@@ -1,24 +1,26 @@
 'use client'
 
 import {useState} from 'react'
+import {siteConfig} from '@/data/site'
 import shell from '../page-shell.module.scss'
 import styles from './info.module.scss'
 
 const tocItems = [
     {id: 'ucitele', label: 'Učitelé'},
     {id: 'spravci', label: 'Správci LAN Party systému'},
+    {id: 'organizatoriturnaju', label: 'Organizátoři turnajů'},
     {id: 'grillmasteri', label: 'Grillmasteři'},
     {id: 'kontakt', label: 'Kontakt'},
     {id: 'stazeni', label: 'Stažení PDF'},
 ]
 
 interface Organizer {
-    name: string
-    role: string
-    phone?: string
-    instagram?: string
-    avatarUrl?: string
-    category: 'teacher' | 'admin' | 'grillmaster'
+    name: string;
+    role: string;
+    phone?: string;
+    instagram?: string;
+    avatarUrl?: string | null;
+    category: 'teacher' | 'admin' | 'grillmaster' | "tournaments";
 }
 
 const organizers: Organizer[] = [
@@ -49,6 +51,8 @@ const organizers: Organizer[] = [
     {name: 'Karel Honsig', role: 'Učitel', phone: '+420 724 478 552', instagram: '@karelhonsig', category: 'teacher', avatarUrl: "https://cloud02.emsio.cz/public/avatars/f997e1dc-2467-45be-bc13-3d0c58a0c424.png",},
     {name: 'Stanislav Škudrna', role: 'Správce LAN Party systému', instagram: '@aldiix', category: 'admin', avatarUrl: "https://cloud02.emsio.cz/public/avatars/stanislavskudrna.png"},
     {name: 'Serhii Yavorskyi', role: 'Správce LAN Party systému', instagram: '@_.yavorskiy.s._', category: 'admin', avatarUrl: "https://cloud02.emsio.cz/public/avatars/serhii.png"},
+    {name: 'Jáchym Klír', role: 'Organizátor CS2 turnaje', instagram: '@klirakk', category: 'tournaments', avatarUrl: "https://cloud02.emsio.cz/public/avatars/DSC_4222.jpg"},
+    {name: 'Sebastien Prejza', role: 'Organizátor CS2 turnaje', instagram: '@@', category: 'tournaments', avatarUrl: null},
 ]
 
 function OrganizerCard({org}: { org: Organizer }) {
@@ -88,10 +92,12 @@ function OrganizerCard({org}: { org: Organizer }) {
 export default function InfoPage() {
     const [search, setSearch] = useState('')
     const query = search.toLowerCase()
+    const event = siteConfig.currentEvent
 
     const teachers = organizers.filter((o) => o.category === 'teacher')
     const admins = organizers.filter((o) => o.category === 'admin')
     const grillmasters = organizers.filter((o) => o.category === 'grillmaster')
+    const tournaments = organizers.filter((o) => o.category === 'tournaments')
 
     const filterOrg = (list: Organizer[]) =>
         list.filter((o) => o.name.toLowerCase().includes(query) || o.role.toLowerCase().includes(query))
@@ -99,15 +105,16 @@ export default function InfoPage() {
     const filteredTeachers = filterOrg(teachers)
     const filteredAdmins = filterOrg(admins)
     const filteredGrillmasters = filterOrg(grillmasters)
+    const filteredTournamentsOrgs = filterOrg(tournaments);
 
     return (
         <div className={shell.page}>
             <div className={shell.pageHeader}>
                 <span className={shell.eyebrow}>Informace</span>
-                <h1 className={shell.title}>Summer LAN party - 2026</h1>
+                <h1 className={shell.title}>{event.name} - {event.year}</h1>
                 <p className={shell.description}>
-                    SŠ EDUCHEM, Eduarda Basse 1142, 434 01 Most. Akce probíhá od 5.6. 12:00 do 6.6. 14:00 a časy jsou
-                    orientační.
+                    {event.venueFull}. Akce probíhá od {event.startDate} {event.startTime} do {event.endDate}{' '}
+                    {event.endTime} a časy jsou orientační.
                 </p>
             </div>
 
@@ -169,6 +176,23 @@ export default function InfoPage() {
                         )}
                     </section>
 
+
+                    <section id="organizatoriturnaju" className={shell.section}>
+                        <h2 className={shell.sectionTitle}>
+                            <span className={shell.sectionMark} aria-hidden="true"/>
+                            Organizátoři turnajů
+                        </h2>
+                        {filteredTournamentsOrgs.length > 0 ? (
+                            <div className={shell.grid2}>
+                                {filteredTournamentsOrgs.map((org) => (
+                                    <OrganizerCard key={org.name} org={org}/>
+                                ))}
+                            </div>
+                        ) : (
+                            <p className={shell.empty}>Zatím zde nikdo není :)</p>
+                        )}
+                    </section>
+
                     <section id="grillmasteri" className={shell.section}>
                         <h2 className={shell.sectionTitle}>
                             <span className={shell.sectionMark} aria-hidden="true"/>
@@ -184,6 +208,7 @@ export default function InfoPage() {
                             <p className={shell.empty}>Grillmasteři budou k dispozici u grilu během akce.</p>
                         )}
                     </section>
+
 
                     <section id="kontakt" className={shell.section}>
                         <h2 className={shell.sectionTitle}><span className={shell.sectionMark} aria-hidden="true"/>Kontakt

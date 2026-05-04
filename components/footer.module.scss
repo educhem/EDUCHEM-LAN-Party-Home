@@ -84,6 +84,26 @@
     font-size: 0.9rem;
 }
 
+.meta {
+    display: grid;
+    gap: 8px;
+    max-width: 860px;
+    margin: 26px auto 0;
+    color: var(--text-color-secondary);
+    text-align: center;
+    font-size: 0.95rem;
+}
+
+.inlineLink {
+    color: var(--accent-color);
+    font-weight: 800;
+
+    &:hover {
+        text-decoration: underline;
+        text-underline-offset: 4px;
+    }
+}
+
 @media (max-width: 820px) {
     .content {
         flex-direction: column;

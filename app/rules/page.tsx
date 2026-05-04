@@ -2,6 +2,7 @@
 
 import {useState} from 'react'
 import {Accordion, AccordionItem} from '@/components/accordion'
+import {siteConfig} from '@/data/site'
 import shell from '../page-shell.module.scss'
 
 interface RuleCategory {
@@ -118,6 +119,7 @@ const tocItems = categories.map((cat) => ({id: cat.id, label: cat.title}))
 export default function RulesPage() {
     const [search, setSearch] = useState('')
     const query = search.toLowerCase()
+    const event = siteConfig.currentEvent
 
     const filteredCategories = categories
         .map((cat) => ({
@@ -137,7 +139,7 @@ export default function RulesPage() {
                 <span className={shell.eyebrow}>Pravidla</span>
                 <h1 className={shell.title}>Pravidla akce</h1>
                 <p className={shell.description}>
-                    Pravidla platná pro všechny účastníky Summer LAN Party 2026. Přečtěte si je prosím pozorně.
+                    Pravidla platná pro všechny účastníky {event.title}. Přečtěte si je prosím pozorně.
                 </p>
             </div>
 

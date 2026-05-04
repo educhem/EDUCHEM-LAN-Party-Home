@@ -3,14 +3,15 @@ import {Navbar} from '@/components/navbar'
 import {Footer} from '@/components/footer'
 import {BackToTop} from '@/components/back-to-top'
 import {ThemeProvider} from '@/components/theme-provider'
+import {siteConfig} from '@/data/site'
 import './globals.scss'
 
 export const metadata: Metadata = {
     title: {
-        default: 'Summer LAN Party 2026',
-        template: '%s | Summer LAN Party 2026',
+        default: siteConfig.currentEvent.title,
+        template: `%s » ${siteConfig.currentEvent.title}`,
     },
-    description: 'Summer LAN Party 2026 na SŠ EDUCHEM v Mostě. 5.-6. června, vstup 100 Kč.',
+    description: `${siteConfig.currentEvent.title} na ${siteConfig.currentEvent.venueFull}. ${siteConfig.currentEvent.dateLong}, vstup ${siteConfig.currentEvent.fee}.`,
     robots: {
         index: false,
         follow: false,

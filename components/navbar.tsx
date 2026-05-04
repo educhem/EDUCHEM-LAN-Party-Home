@@ -4,16 +4,8 @@ import Link from 'next/link'
 import {usePathname} from 'next/navigation'
 import {useState} from 'react'
 import {useTheme} from './theme-provider'
+import {siteConfig} from '@/data/site'
 import styles from './navbar.module.scss'
-
-const links = [
-    {href: '/', label: 'Home'},
-    {href: '/info', label: 'Info'},
-    {href: '/reservation', label: 'Rezervace'},
-    {href: '/rules', label: 'Pravidla'},
-    {href: '/schedule', label: 'Harmonogram'},
-    {href: '/faq', label: 'FAQ'},
-]
 
 export function Navbar() {
     const pathname = usePathname()
@@ -25,11 +17,11 @@ export function Navbar() {
             <header className={styles.header}>
                 <Link href="/" className={styles.logo}>
                     <span className={styles.logoMark} aria-hidden="true"/>
-                    <span>EDUCHEM LAN Party</span>
+                    <span>{siteConfig.brandName}</span>
                 </Link>
 
                 <nav className={styles.nav}>
-                    {links.map((link) => (
+                    {siteConfig.navLinks.map((link) => (
                         <Link
                             key={link.href}
                             href={link.href}
@@ -66,7 +58,7 @@ export function Navbar() {
                 <a href="/app/" className={styles.mobileSystemLink}>
                     Vstup do systému
                 </a>
-                {links.map((link) => (
+                {siteConfig.navLinks.map((link) => (
                     <Link
                         key={link.href}
                         href={link.href}

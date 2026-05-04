@@ -1,13 +1,8 @@
 import Link from 'next/link'
+import {siteConfig} from '@/data/site'
 import styles from './footer.module.scss'
 
-const footerLinks = [
-    {href: '/info', label: 'Info'},
-    {href: '/reservation', label: 'Rezervace'},
-    {href: '/rules', label: 'Pravidla'},
-    {href: '/schedule', label: 'Harmonogram'},
-    {href: '/faq', label: 'FAQ'},
-]
+const footerLinks = siteConfig.navLinks.filter((link) => link.href !== '/')
 
 export function Footer() {
     return (
@@ -16,7 +11,7 @@ export function Footer() {
                 <div className={styles.content}>
                     <Link href="/" className={styles.logo}>
                         <span className={styles.logoMark} aria-hidden="true"/>
-                        <span>EDUCHEM LAN Party</span>
+                        <span>{siteConfig.brandName}</span>
                     </Link>
 
                     <nav className={styles.links}>
@@ -37,8 +32,25 @@ export function Footer() {
                     </div>
                 </div>
 
+                <div className={styles.meta}>
+                    {/*<p>*/}
+                    {/*    Autor webu:{' '}*/}
+                    {/*    <Link href={siteConfig.author.href} className={styles.inlineLink}>*/}
+                    {/*        {siteConfig.author.name}*/}
+                    {/*    </Link>*/}
+                    {/*    . Projekt je záměrně vibecoděn kvůli komplexnosti LAN Party systému, který je extrémně*/}
+                    {/*    náročný, a veškerý čas jde hlavně do něj.*/}
+                    {/*</p>*/}
+                    <p>
+                        Web je open source:{' '}
+                        <a href={siteConfig.repository.href} className={styles.inlineLink} target="_blank" rel="noreferrer">
+                            {siteConfig.repository.label}
+                        </a>
+                    </p>
+                </div>
+
                 <p className={styles.note}>
-                    Summer LAN Party 2026 - SŠ EDUCHEM, Eduarda Basse 1142, 434 01 Most
+                    {siteConfig.currentEvent.title} - {siteConfig.currentEvent.venueFull}
                 </p>
             </div>
         </footer>
