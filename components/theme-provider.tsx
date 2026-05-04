@@ -4,6 +4,9 @@ import {createContext, type ReactNode, useContext, useEffect, useState} from 're
 
 type Theme = 'light' | 'dark'
 
+const THEME_COOKIE = 'theme'
+const THEME_COOKIE_MAX_AGE = 60 * 60 * 24 * 365
+
 interface ThemeContextType {
     theme: Theme
     toggleTheme: () => void
@@ -17,13 +20,27 @@ const ThemeContext = createContext<ThemeContextType>({
     mounted: false,
 })
 
+function getStoredTheme(): Theme | null {
+    const cookie = document.cookie
+        .split('; ')
+        .find((row) => row.startsWith(`${THEME_COOKIE}=`))
+
+    const theme = cookie?.split('=')[1]
+
+    return theme === 'light' || theme === 'dark' ? theme : null
+}
+
+function storeTheme(theme: Theme) {
+    document.cookie = `${THEME_COOKIE}=${theme}; path=/; max-age=${THEME_COOKIE_MAX_AGE}; samesite=lax`
+}
+
 export function ThemeProvider({children}: { children: ReactNode }) {
     const [theme, setTheme] = useState<Theme>('dark')
     const [mounted, setMounted] = useState(false)
 
     useEffect(() => {
         setMounted(true)
-        const stored = localStorage.getItem('theme') as Theme | null
+        const stored = getStoredTheme()
         if (stored) {
             setTheme(stored)
             document.documentElement.classList.toggle('light', stored === 'light')
@@ -38,7 +55,7 @@ export function ThemeProvider({children}: { children: ReactNode }) {
     const toggleTheme = () => {
         const newTheme = theme === 'dark' ? 'light' : 'dark'
         setTheme(newTheme)
-        localStorage.setItem('theme', newTheme)
+        storeTheme(newTheme)
         document.documentElement.classList.toggle('light', newTheme === 'light')
     }
 
