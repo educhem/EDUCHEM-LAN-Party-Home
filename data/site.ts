@@ -28,7 +28,7 @@ export const siteConfig = {
         endDate: '6.6.',
         startTime: '12:00',
         endTime: '14:00',
-        paymentDeadline: '4.6. 20:00',
+        paymentDeadline: '3.6. 20:00',
         venueShort: 'SŠ EDUCHEM',
         venueFull: 'SŠ EDUCHEM, Eduarda Basse 1142, 434 01 Most',
         fee: '100 Kč',
