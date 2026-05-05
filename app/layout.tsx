@@ -1,9 +1,12 @@
 import type {Metadata, Viewport} from 'next'
+import {cookies} from 'next/headers'
+import Script from 'next/script'
 import {Navbar} from '@/components/navbar'
 import {Footer} from '@/components/footer'
 import {BackToTop} from '@/components/back-to-top'
 import {ThemeProvider} from '@/components/theme-provider'
 import {siteConfig} from '@/data/site'
+import {DEFAULT_THEME, isTheme, type Theme, THEME_COOKIE, THEME_COOKIE_MAX_AGE} from '@/lib/theme'
 import './globals.scss'
 
 export const metadata: Metadata = {
@@ -31,15 +34,45 @@ export const viewport: Viewport = {
     initialScale: 1,
 }
 
-export default function RootLayout({
+function themeInitScript(defaultTheme: Theme) {
+    return `
+(function () {
+    var cookieName = ${JSON.stringify(THEME_COOKIE)};
+    var maxAge = ${THEME_COOKIE_MAX_AGE};
+    var match = document.cookie.match(new RegExp('(?:^|; )' + cookieName + '=([^;]*)'));
+    var stored = match && decodeURIComponent(match[1]);
+    var theme = stored === 'light' || stored === 'dark'
+        ? stored
+        : (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : ${JSON.stringify(defaultTheme)});
+
+    document.documentElement.dataset.theme = theme;
+
+    if (!stored) {
+        document.cookie = cookieName + '=' + theme + '; path=/; max-age=' + maxAge + '; samesite=lax';
+    }
+})();`
+}
+
+export default async function RootLayout({
                                        children,
                                    }: Readonly<{
     children: React.ReactNode
 }>) {
+    const cookieStore = await cookies()
+    const cookieTheme = cookieStore.get(THEME_COOKIE)?.value
+    const theme = isTheme(cookieTheme) ? cookieTheme : DEFAULT_THEME
+
     return (
-        <html lang="cs" suppressHydrationWarning>
+        <html lang="cs" data-theme={theme} suppressHydrationWarning>
+        <head>
+        <Script
+            id="theme-init"
+            strategy="beforeInteractive"
+            dangerouslySetInnerHTML={{__html: themeInitScript(theme)}}
+        />
+        </head>
         <body>
-        <ThemeProvider>
+        <ThemeProvider initialTheme={theme}>
             <Navbar/>
             <main>{children}</main>
             <Footer/>

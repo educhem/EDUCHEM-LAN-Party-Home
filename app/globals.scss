@@ -34,7 +34,7 @@ $radius-sm: 8px;
     --radius-sm: #{$radius-sm};
 }
 
-html.light {
+html[data-theme='light'] {
     --accent-color: #{$accent-light};
     --accent-color-text: white;
     --accent-color-darker: #d96f01;

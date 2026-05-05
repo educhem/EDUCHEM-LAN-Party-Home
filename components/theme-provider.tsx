@@ -1,11 +1,7 @@
 'use client'
 
 import {createContext, type ReactNode, useContext, useEffect, useState} from 'react'
-
-type Theme = 'light' | 'dark'
-
-const THEME_COOKIE = 'theme'
-const THEME_COOKIE_MAX_AGE = 60 * 60 * 24 * 365
+import {DEFAULT_THEME, isTheme, type Theme, THEME_COOKIE, THEME_COOKIE_MAX_AGE} from '@/lib/theme'
 
 interface ThemeContextType {
     theme: Theme
@@ -27,36 +23,43 @@ function getStoredTheme(): Theme | null {
 
     const theme = cookie?.split('=')[1]
 
-    return theme === 'light' || theme === 'dark' ? theme : null
+    return isTheme(theme) ? theme : null
 }
 
-function storeTheme(theme: Theme) {
-    document.cookie = `${THEME_COOKIE}=${theme}; path=/; max-age=${THEME_COOKIE_MAX_AGE}; samesite=lax`
+function applyTheme(theme: Theme, persist: boolean) {
+    document.documentElement.dataset.theme = theme
+
+    if (persist) {
+        document.cookie = `${THEME_COOKIE}=${theme}; path=/; max-age=${THEME_COOKIE_MAX_AGE}; samesite=lax`
+    }
 }
 
-export function ThemeProvider({children}: { children: ReactNode }) {
-    const [theme, setTheme] = useState<Theme>('dark')
+function getInitialTheme(initialTheme: Theme): Theme {
+    if (typeof document === 'undefined') {
+        return initialTheme
+    }
+
+    const htmlTheme = document.documentElement.dataset.theme
+    if (isTheme(htmlTheme)) {
+        return htmlTheme
+    }
+
+    return getStoredTheme() ?? initialTheme
+}
+
+export function ThemeProvider({children, initialTheme = DEFAULT_THEME}: { children: ReactNode; initialTheme?: Theme }) {
+    const [theme, setTheme] = useState<Theme>(() => getInitialTheme(initialTheme))
     const [mounted, setMounted] = useState(false)
 
     useEffect(() => {
         setMounted(true)
-        const stored = getStoredTheme()
-        if (stored) {
-            setTheme(stored)
-            document.documentElement.classList.toggle('light', stored === 'light')
-        } else {
-            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
-            const initial = prefersDark ? 'dark' : 'light'
-            setTheme(initial)
-            document.documentElement.classList.toggle('light', initial === 'light')
-        }
-    }, [])
+        applyTheme(theme, getStoredTheme() === null)
+    }, [theme])
 
     const toggleTheme = () => {
         const newTheme = theme === 'dark' ? 'light' : 'dark'
         setTheme(newTheme)
-        storeTheme(newTheme)
-        document.documentElement.classList.toggle('light', newTheme === 'light')
+        applyTheme(newTheme, true)
     }
 
     return (

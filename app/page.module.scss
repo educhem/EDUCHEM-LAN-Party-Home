@@ -25,11 +25,11 @@
     opacity: 0;
 }
 
-:global(html.light) .heroImageDark {
+:global(html[data-theme='light']) .heroImageDark {
     opacity: 0;
 }
 
-:global(html.light) .heroImageLight {
+:global(html[data-theme='light']) .heroImageLight {
     opacity: 1;
 }
 
@@ -41,12 +41,12 @@
     linear-gradient(0deg, var(--background-bg), transparent 36%);
 }
 
-:global(html.light) .heroOverlay {
+:global(html[data-theme='light']) .heroOverlay {
     background: linear-gradient(90deg, rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.48) 48%, rgba(255, 255, 255, 0.24)),
     linear-gradient(0deg, var(--background-bg), transparent 36%);
 }
 
-:global(html.light) .heroDescription {
+:global(html[data-theme='light']) .heroDescription {
     color: black;
 }
 

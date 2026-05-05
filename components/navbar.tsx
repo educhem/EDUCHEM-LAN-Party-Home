@@ -39,7 +39,8 @@ export function Navbar() {
                     <button
                         onClick={toggleTheme}
                         className={styles.iconButton}
-                        aria-label={theme === 'dark' ? 'Přepnout na světlý režim' : 'Přepnout na tmavý režim'}
+                        aria-label="Přepnout barevný režim"
+                        title={theme === 'dark' ? 'Přepnout na světlý režim' : 'Přepnout na tmavý režim'}
                     >
                         <span className={styles.themeIcon} aria-hidden="true"/>
                     </button>

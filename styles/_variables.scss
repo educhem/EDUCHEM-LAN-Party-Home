@@ -69,7 +69,7 @@ $breakpoint-desktop: 900px;
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
 
-    :global(html.light) & {
+    :global(html[data-theme='light']) & {
         background: rgba(255, 255, 255, 0.7);
     }
 }
