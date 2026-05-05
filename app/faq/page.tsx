@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 const faqItems = [
     {
         question: 'Kolik stojí vstupné a jak zaplatit?',
-        answer: `Vstupné je ${event.fee}. Zaplaťte převodem na účet ${event.bankAccount} se zprávou: ${event.paymentMessage}. Můžete také použít QR kód z info PDF. Termín platby: do ${event.paymentDeadline}.`
+        answer: `Vstupné je ${event.fee}. Zaplaťte převodem na účet ${event.bankAccount} se zprávou: ${event.paymentMessage}. Můžete také použít QR kód na stránce Rezervace. Termín platby: do ${event.paymentDeadline}. Platby přiřazujeme ručně, takže potvrzení může trvat až 2 pracovní dny.`
     },
     {
         question: 'Kdy akce probíhá?',
@@ -21,7 +21,7 @@ const faqItems = [
     },
     {
         question: 'Musím si rezervovat místo?',
-        answer: 'Pokud si neplánujete brát s sebou PC ani být na školním PC, nemusíte si místo rezervovat. Kvůli velkému počtu účastníků je ale ideální rezervovat si počítač nebo místo pro vlastní setup.'
+        answer: 'Pokud si neplánujete brát s sebou PC ani být na školním PC, nemusíte si místo rezervovat. Kvůli velkému počtu účastníků je ale ideální rezervovat si počítač nebo místo pro vlastní setup. Pořád ale vstup musíte zaplatit.'
     },
     {
         question: 'Mohu přijít a odejít kdykoliv?',

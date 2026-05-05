@@ -55,3 +55,55 @@
     gap: 16px;
     margin-bottom: 48px;
 }
+
+.stepQr {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 18px;
+    align-items: center;
+    margin-top: 16px;
+    padding: 16px;
+    border: 1px solid var(--accent-line);
+    border-radius: var(--radius);
+    background: var(--warning-background);
+}
+
+.stepQrTitle {
+    color: var(--accent-color);
+    font-size: 0.84rem;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.stepQrText {
+    margin-top: 6px;
+    color: var(--text-color-secondary);
+}
+
+.qrCode {
+    width: clamp(116px, 22vw, 164px);
+    aspect-ratio: 1;
+    margin-left: auto;
+    padding: 8px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    background: white;
+    object-fit: contain;
+    flex: 0 0 auto;
+    pointer-events: none;
+}
+
+@media (max-width: 620px) {
+    .step {
+        grid-template-columns: 1fr;
+    }
+
+    .stepQr {
+        grid-template-columns: 1fr;
+    }
+
+    .qrCode {
+        width: min(164px, 100%);
+        margin-left: 0;
+    }
+}

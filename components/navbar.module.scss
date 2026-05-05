@@ -8,7 +8,7 @@
     align-items: center;
     justify-content: space-between;
     height: var(--header-height);
-    padding: 0 max(20px, calc((100vw - var(--container-width)) / 2 + 20px));
+    padding: 0 max(20px, calc((100vw - var(--container-width)) / 2));
     border-bottom: 1px solid var(--border-color);
     background: color-mix(in srgb, var(--background-bg) 82%, transparent);
     backdrop-filter: blur(18px);

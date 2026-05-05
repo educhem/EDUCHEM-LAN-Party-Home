@@ -21,6 +21,7 @@ const steps = [
             'Dodržujte prosím tento formát.',
             `Termín: do ${event.paymentDeadline}`,
             'Můžete zaplatit ručním zadáním, nebo pomocí QR kódu.',
+            'Platby k účastníkům přiřazujeme ručně, proto se přístup může objevit až do 2 pracovních dnů.',
         ],
     },
     {
@@ -28,6 +29,7 @@ const steps = [
         details: [
             'Jakmile zaplatíte, budete mít možnost rezervovat své místo v LAN Party systému.',
             'Přístupové údaje vám přijdou do emailu, který jste uvedli ve zprávě platby.',
+            'Přiřazování plateb probíhá manuálně a může trvat až 2 pracovní dny.',
         ],
     },
     {
@@ -91,30 +93,32 @@ export default function ReservationPage() {
                                     </li>
                                 ))}
                             </ul>
+                            {idx === 0 && (
+                                <div className={styles.stepQr}>
+                                    <div>
+                                        <p className={styles.stepQrTitle}>Platba QR kódem</p>
+                                        <p className={styles.stepQrText}>
+                                            Naskenujte QR kód a před odesláním zkontrolujte zprávu pro příjemce.
+                                            Platba musí být odeslaná do {event.paymentDeadline}.
+                                        </p>
+                                    </div>
+                                    <img className={styles.qrCode} src="/qr.svg" alt="QR kód pro platbu vstupného"/>
+                                </div>
+                            )}
                         </div>
                     </div>
                 ))}
             </div>
 
             <div className={styles.alerts}>
-                <div className={shell.alert}>
-                    <div className={shell.alertIcon} aria-hidden="true">!</div>
-                    <div>
-                        <p className={shell.alertTitle}>Platba QR kódem</p>
-                        <p className={shell.alertDescription}>
-                            Vstupné můžete zaplatit pomocí QR kódu nebo ručním zadáním platebních údajů. Údaje jsou
-                            uvedené v originálním info PDF.
-                        </p>
-                    </div>
-                </div>
-
                 <div className={`${shell.alert} ${shell.alertError}`}>
                     <div className={shell.alertIcon} aria-hidden="true">!</div>
                     <div>
                         <p className={shell.alertTitle}>Důležité upozornění</p>
                         <p className={shell.alertDescription}>
                             Ve zprávě pro příjemce dodržujte formát: {event.paymentMessage}. Bez správného formátu
-                            nemusí být platba přiřazena.
+                            nemusí být platba přiřazena. Platby přiřazujeme k účastníkům ručně, takže potvrzení
+                            může trvat až 2 pracovní dny.
                         </p>
                     </div>
                 </div>

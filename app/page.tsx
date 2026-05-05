@@ -95,18 +95,28 @@ export default function HomePage() {
                                 <div>
                                     <h3 className={styles.stepTitle}>Zaplatit vstupné</h3>
                                     <p className={styles.stepText}>
-                                        Převodem {event.fee} na účet {event.bankAccount}. Do zprávy napište{' '}
-                                        {event.paymentMessage}.
+                                        Převodem {event.fee} na účet {event.bankAccount} nebo QR kódem. Do zprávy
+                                        napište {event.paymentMessage}.
                                     </p>
                                 </div>
+                            </div>
+                            <div className={styles.homeQr}>
+                                <div>
+                                    <p className={styles.homeQrKicker}>Platba QR kódem</p>
+                                    <p className={styles.homeQrText}>
+                                        Naskenujte QR kód a před odesláním zkontrolujte zprávu pro příjemce.
+                                        Platba musí být odeslaná do {event.paymentDeadline}.
+                                    </p>
+                                </div>
+                                <img className={styles.homeQrImage} src="/qr.svg" alt="QR kód pro platbu vstupného"/>
                             </div>
                             <div className={styles.step}>
                                 <div className={styles.stepNumber}>2</div>
                                 <div>
                                     <h3 className={styles.stepTitle}>Obdržet přístup</h3>
                                     <p className={styles.stepText}>
-                                        Jakmile zaplatíte, přijdou vám přístupové údaje do emailu uvedeného ve zprávě
-                                        platby.
+                                        Platby přiřazujeme ručně, takže přístupové údaje do emailu mohou dorazit až do
+                                        2 pracovních dnů.
                                     </p>
                                 </div>
                             </div>
