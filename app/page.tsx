@@ -13,7 +13,7 @@ export default function HomePage() {
                     <img src="/images/banner3.jpeg" alt=""/>
                 </div>
                 <div className={`${styles.heroImage} ${styles.heroImageLight}`}>
-                    <img src="/images/banner2.jpeg" alt=""/>
+                    <img src="/images/history/summer2024/IMG_20240607_195534.jpg" alt=""/>
                 </div>
                 <div className={styles.heroOverlay}/>
                 <div className={styles.heroContent}>
