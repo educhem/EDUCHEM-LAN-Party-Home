@@ -78,7 +78,7 @@ export default function HomePage() {
                                 rezervujete školní počítač nebo místo pro vlastní setup.
                             </p>
                         </div>
-                        <a href="/app/" className={`${shell.button} ${shell.primaryButton}`}>
+                        <a href="/app/reservations" className={`${shell.button} ${shell.primaryButton}`}>
                             Vstup do systému
                         </a>
                     </div>

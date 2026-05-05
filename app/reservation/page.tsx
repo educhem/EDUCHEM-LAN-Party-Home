@@ -74,7 +74,7 @@ export default function ReservationPage() {
                     Rezervace je určená pro účastníky, kteří chtějí mít jistotu školního PC nebo místa pro vlastní
                     setup.
                 </p>
-                <a href="/app/" className={`${shell.button} ${shell.primaryButton}`}>
+                <a href="/app/reservations" className={`${shell.button} ${shell.primaryButton}`}>
                     Vstup do rezervačního systému
                 </a>
             </div>
