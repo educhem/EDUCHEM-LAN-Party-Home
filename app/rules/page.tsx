@@ -26,7 +26,7 @@ const categories: RuleCategory[] = [
             },
             {
                 title: 'Technická zařízení',
-                content: 'Není dovoleno měnit zapojení školních PC (odpojovat monitory) či jiné periferie včetně myší a klávesnice.'
+                content: 'Není dovoleno měnit zapojení školních PC (odpojovat monitory) či jiné periferie včetně myší a klávesnice. Můžete si ale připojit vlastní myš/sluchátka/klávesnice do VOLNÝCH portů.'
             },
             {title: 'Cizí vybavení', content: 'Prosíme, nezasahujte do cizího vybavení bez svolení majitele.'},
             {
