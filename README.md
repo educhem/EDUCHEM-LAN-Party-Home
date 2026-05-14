@@ -1,5 +1,7 @@
 # EDUCHEM LAN Party Home
 
+> Tento repozitář je neaktivní, byl přesunut do nového repozitáře https://github.com/AldiiX/Educhem-LAN-Party-App
+
 Prezentační web pro Summer LAN Party 2026 na SŠ EDUCHEM.
 
 Tento projekt slouží hlavně jako jednoduchá veřejná informační stránka: termín akce, pravidla, organizátoři,
